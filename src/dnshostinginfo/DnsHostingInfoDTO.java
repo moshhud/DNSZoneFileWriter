@@ -9,6 +9,7 @@ public class DnsHostingInfoDTO{
 	String domainName;
 	String primaryDNS;
 	String secondaryDNS;
+	String tertiaryDNS;
 	String email;
 	long packageID;
 	long expiryDate;
@@ -24,6 +25,12 @@ public class DnsHostingInfoDTO{
 	long nextPackageID;
 	int tldType;
 		
+	public String getTertiaryDNS() {
+		return tertiaryDNS;
+	}
+	public void setTertiaryDNS(String tertiaryDNS) {
+		this.tertiaryDNS = tertiaryDNS;
+	}
 	public long getID() {
 		return ID;
 	}

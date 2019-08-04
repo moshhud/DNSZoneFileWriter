@@ -1,5 +1,5 @@
 <CONNECTIONS>
-<CONNECTION ID="1" DRIVER_CLASS_NAME="com.mysql.jdbc.Driver" DATABASE_URL="jdbc:mysql:///btclautomationserver"
+<CONNECTION ID="1" DRIVER_CLASS_NAME="com.mysql.jdbc.Driver" DATABASE_URL="jdbc:mysql:///btcl_domain_updated"
  USER_NAME = "root" PASSWORD = "root"
  IS_DEFAULT = "TRUE"/>
 </CONNECTIONS>

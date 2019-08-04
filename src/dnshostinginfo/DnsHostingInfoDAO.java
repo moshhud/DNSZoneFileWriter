@@ -113,8 +113,8 @@ public class DnsHostingInfoDAO {
 			}
 			
 			sql = "select dnsID,dnsClientID,dnsFQDN,dnsPrimaryDNS"
-					+ ",dnsSecondaryDNS,dnsEmail,dnsIsPrivileged"
-					+ ",dnsStatus,dnsZoneFileUpdateStatus,dnsIsFirstWrite,dnsTLDType"
+					+ ",dnsSecondaryDNS,dnsTertiaryDNS,dnsEmail,dnsIsPrivileged"
+					+ ",dnsZoneFileUpdateStatus,dnsIsFirstWrite,dnsTLDType"
 					+ "  from "+tableName+" where 1=1 "+condition;
 			//logger.debug(sql);
 			stmt = connection.createStatement();
@@ -131,10 +131,11 @@ public class DnsHostingInfoDAO {
 				dto.setSecondaryDNS(rs.getString("dnsSecondaryDNS"));
 				dto.setEmail(rs.getString("dnsEmail"));
 				dto.setIsPrivileged(rs.getInt("dnsIsPrivileged"));
-				dto.setStatus(rs.getInt("dnsStatus"));
+				//dto.setStatus(rs.getInt("dnsStatus"));
 				dto.setZoneFileUpdateStatus(rs.getInt("dnsZoneFileUpdateStatus"));
 				dto.setIsFirstWrite(rs.getInt("dnsIsFirstWrite"));
 				dto.setTldType(rs.getInt("dnsTLDType"));
+				dto.setTertiaryDNS(rs.getString("dnsTertiaryDNS"));
 				data.put(rs.getLong("dnsID"), dto);
 			}
 			

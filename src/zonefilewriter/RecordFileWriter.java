@@ -15,36 +15,42 @@ import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
 
+import common.ApplicationConstants;
+import common.EmailValidator;
+import common.SmsMailLogDAO;
 import dnshostinginfo.DNSHostingConstant;
 import dnshostinginfo.DnsHostingInfoDTO;
 import dnshostinginfo.DnsHostingZoneRecordDTO;
 
+
 public class RecordFileWriter {
 	static Logger logger = Logger.getLogger(RecordFileWriter.class);
-	String winDir = "";//"D:/root";	
+	String winDir = "";//"D:/root";	//test dir for windows
+	String[] dotBDSlds = {"com", "co", "edu", "gov", "info", "net", "org", "ac", "mil" ,"ws", "tv"};
+	
 	private  final String ZONE_FILE_CONSTANT_PORTION = "$TTL 86400\n"+
-			"VAR_FQDN.    IN SOA 	VAR_DNS_1. VAR_DNS_2.  (\n"+
+			"VAR_FQDN.  900  IN SOA 	VAR_DNS_1. VAR_DNS_2.  (\n"+
 			"   VAR_SERIAL_NUMBER	; Serial\n"+
 			"   1200	; Refresh \n"+
-			"   3600	; Retry every hour\n"+
-			"   604800	; Expire after a week\n"+
-			"   86400 )	; Minimum ttl of 1 day\n"+
-			" \t\t\t\tIN	NS	"+DNSHostingConstant.DNS_HOSTING_PRIMARY_DNS+". \n"+
-			" \t\t\t\tIN	NS	"+DNSHostingConstant.DNS_HOSTING_SECONDARY_DNS+". \n";
+			"   3600	; Retry\n"+
+			"   604800	; Expire\n"+
+			"   86400 )	; Minimum ttl\n"+
+			" \t\t\t\tIN	NS	VAR_DEFAULT_DNS_1. \n"+
+			" \t\t\t\tIN	NS	VAR_DEFAULT_DNS_2. \n";
 	
 	private  final String REVERSE_ZONE_FILE_CONSTANT_PORTION = "$TTL 86400\n"+
-			"VAR_FQDN.    IN SOA 	VAR_DNS_1. VAR_DNS_2.  (\n"+
+			"VAR_FQDN.  900  IN SOA 	VAR_DNS_1. VAR_DNS_2.  (\n"+
 			"   VAR_SERIAL_NUMBER	; Serial\n"+
 			"   1200	; Refresh \n"+
-			"   3600	; Retry every hour\n"+
-			"   604800	; Expire after a week\n"+
-			"   86400 )	; Minimum ttl of 1 day\n"+
-			" \t\t\t\tIN	NS	"+DNSHostingConstant.DNS_HOSTING_PRIMARY_DNS_REVERSE+". \n"+
-			" \t\t\t\tIN	NS	"+DNSHostingConstant.DNS_HOSTING_SECONDARY_DNS_REVERSE+". \n";
+			"   3600	; Retry\n"+
+			"   604800	; Expire\n"+
+			"   86400 )	; Minimum ttl\n"+
+			" \t\t\t\tIN	NS	VAR_DEFAULT_DNS_1. \n"+
+			" \t\t\t\tIN	NS	VAR_DEFAULT_DNS_2. \n";
 	
 	private  final String NAMED_FILE_CONTENT ="zone \"VAR_DOMAIN\" IN {\n"
 			+ "  type master;\n"
-			+ "  file \"VAR_ZONE_FILE_NAME\";\n"
+			+ "  file \""+ZoneFileWriter.zoneFileLocation+"/VAR_ZONE_FILE_NAME\";\n"
 			+ "  allow-update {VAR_ALLOWED_UPDATE_IP;};\n"
 			+ "};";
 	
@@ -69,6 +75,7 @@ public class RecordFileWriter {
 	
 	public void writeIntoNamedFile(String domain, String fileName,Writer writer) {
 		try {
+			
 			String content = NAMED_FILE_CONTENT.replace("VAR_DOMAIN", domain);
 			content = content.replaceAll("VAR_ZONE_FILE_NAME", fileName);
 			content = content.replaceAll("VAR_ALLOWED_UPDATE_IP", ZoneFileWriter.named_allowed_update_ip);
@@ -92,49 +99,57 @@ public class RecordFileWriter {
 			header = header.replaceAll("VAR_DNS_2", dto.getSecondaryDNS());
 			//header = header.replaceAll("VAR_EMAIL", dto.getEmail());
 			header = header.replaceAll("VAR_SERIAL_NUMBER", getSerialNumber(System.currentTimeMillis()));
+			header = header.replaceAll("VAR_DEFAULT_DNS_1", dto.getPrimaryDNS().length()>3? dto.getPrimaryDNS():ZoneFileWriter.primaryDNS);
+			header = header.replaceAll("VAR_DEFAULT_DNS_2", dto.getSecondaryDNS().length()>3? dto.getSecondaryDNS():ZoneFileWriter.secondaryDNS);
 			header +="$ORIGIN  "+dto.getDomainName()+".";
 			writer.write(header);
 			writer.write("\n");
 			int maxPriority = 10;
 			
-			for (DnsHostingZoneRecordDTO zoneDTO : dto.getZoneRecordDTOMap().values()) {
-				
-				if(zoneDTO!=null) {
-					StringBuffer sb = new StringBuffer();	
+			if(dto.getZoneRecordDTOMap().values()!=null && dto.getZoneRecordDTOMap().values().size()>0) {
+				for (DnsHostingZoneRecordDTO zoneDTO : dto.getZoneRecordDTOMap().values()) {
 					
-					if(zoneDTO.getRecordType().equals("MX")) {
-						sb.append(zoneDTO.getRecordName()+"  ");
-						sb.append(zoneDTO.getTtl()+" ");
-						sb.append(zoneDTO.getRecordClass()+" ");
-						sb.append(zoneDTO.getRecordType()+" ");
-						sb.append(zoneDTO.getMxPriority()>0 ? zoneDTO.getMxPriority(): maxPriority +" ");
-						sb.append(zoneDTO.getRecordValue()+" ");
-						maxPriority += 10;
-						String[] arr = zoneDTO.getRecordValue().split(Pattern.quote("."));
-						mxData.put(arr[0], zoneDTO.getRecordValue());
-						
-					}else {
-						sb.append(zoneDTO.getRecordName()+"  ");
-						sb.append(zoneDTO.getTtl()+" ");
-						sb.append(zoneDTO.getRecordClass()+" ");
-						sb.append(zoneDTO.getRecordType()+" ");
-						sb.append(zoneDTO.getRecordValue()+" ");					
-					}
-					
-					if(zoneDTO.getRecordType().equals("A")) {
-						if(mxData.containsKey(zoneDTO.getRecordName())) {
-							aData.put(zoneDTO.getRecordName(), zoneDTO.getRecordValue());
+					if(zoneDTO!=null) {
+						StringBuffer sb = new StringBuffer();	
+						if(zoneDTO.getRecordType().equals("NS")) {
+							continue;
 						}
+						if(zoneDTO.getRecordType().equals("MX")) {
+							sb.append(zoneDTO.getRecordName()+"  ");
+							sb.append(zoneDTO.getTtl()+" ");
+							sb.append(zoneDTO.getRecordClass()+" ");
+							sb.append(zoneDTO.getRecordType()+" ");
+							sb.append(zoneDTO.getMxPriority()>0 ? zoneDTO.getMxPriority(): maxPriority +" ");
+							sb.append(zoneDTO.getRecordValue()+" ");
+							maxPriority += 10;
+							String[] arr = zoneDTO.getRecordValue().split(Pattern.quote("."));
+							mxData.put(arr[0], zoneDTO.getRecordValue());
+							
+						}else {
+							sb.append(zoneDTO.getRecordName()+"  ");
+							sb.append(zoneDTO.getTtl()+" ");
+							sb.append(zoneDTO.getRecordClass()+" ");
+							sb.append(zoneDTO.getRecordType()+" ");
+							sb.append(zoneDTO.getRecordValue()+" ");					
+						}
+						
+						if(zoneDTO.getRecordType().equals("A")) {
+							if(mxData.containsKey(zoneDTO.getRecordName())) {
+								aData.put(zoneDTO.getRecordName(), zoneDTO.getRecordValue());
+							}
+						}
+						writer.write(sb.toString());
+						writer.write("\n");
 					}
-					writer.write(sb.toString());
-					writer.write("\n");
 				}
-			}
-			
-			writer.flush();
-			writer.close();
-			if(aData!=null&&aData.size()>0) {
-				createReverseDNSFile(mxData,aData);
+				
+				writer.flush();
+				writer.close();
+				if(aData!=null&&aData.size()>0) {
+					createReverseDNSFile(mxData,aData);
+				}
+			}else {
+				logger.debug("No zone Record found for "+dto.getDomainName());
 			}
 			
 			
@@ -143,6 +158,158 @@ public class RecordFileWriter {
 		}
 		
 	}
+	
+	public  void createParkedZoneFile(DnsHostingInfoDTO dto,Writer writer) {	
+		try {
+			String header = ZONE_FILE_CONSTANT_PORTION.replace("VAR_FQDN", dto.getDomainName());
+			header = header.replaceAll("VAR_DNS_1", "ns1.btclparked.com.bd");
+			header = header.replaceAll("VAR_DNS_2", "ns2.btclparked.com.bd");
+			header = header.replaceAll("VAR_SERIAL_NUMBER", getSerialNumber(System.currentTimeMillis()));
+			header = header.replaceAll("VAR_DEFAULT_DNS_1", ZoneFileWriter.parkingDNS1);
+			header = header.replaceAll("VAR_DEFAULT_DNS_2", ZoneFileWriter.parkingDNS2);
+			if(ZoneFileWriter.parkingDNS3!=null&& !ZoneFileWriter.parkingDNS3.equals("")) {
+				header += " \t\t\t\tIN	NS	VAR_DEFAULT_DNS_3. \n".replace("VAR_DEFAULT_DNS_3", ZoneFileWriter.parkingDNS3);
+			}
+			
+			header +="$ORIGIN  "+dto.getDomainName()+".";
+			writer.write(header);
+			writer.write("\n");
+			
+			StringBuffer sb = new StringBuffer();	
+			
+			sb.append("www ");
+			sb.append("900  ");
+			sb.append("IN ");
+			sb.append("A ");
+			sb.append("123.49.12.133 ");			
+			writer.write(sb.toString());
+			writer.write("\n");
+			
+			sb = new StringBuffer();	
+			sb.append(dto.getDomainName()+".  ");
+			sb.append("900  ");
+			sb.append("IN ");
+			sb.append("A ");
+			sb.append("123.49.12.133 ");			
+			writer.write(sb.toString());
+			writer.write("\n");
+			
+			writer.flush();
+			writer.close();			
+			
+		}catch(Exception e) {
+			logger.fatal(e.toString());
+		}
+		
+	}
+	
+	public void deleteContent(String filePath, String matchString) {
+	   try {
+		    //logger.debug("Deleting if any duplicate for : "+matchString+" in named.conf");
+		    BufferedReader file = new BufferedReader(new FileReader(filePath));
+	        String line;
+	        StringBuffer inputBuffer = new StringBuffer();
+	        int count=1;
+	        boolean ignore = false;
+	        
+	        while ((line = file.readLine()) != null) {
+	        	if(line.contains(matchString)){	
+	        		  ignore=true; 
+	        	} 
+	        	if(ignore && count<=5){
+	        			count++;
+	        			continue;
+	        	}
+	        	if(count>5){
+	        		ignore = false;
+	        		count=1;
+	        	}
+	        	
+	            inputBuffer.append(line);
+	            inputBuffer.append("\n");
+	        }
+	        String inputStr = inputBuffer.toString();	
+	        file.close();	       
+	        FileOutputStream fileOut = new FileOutputStream(filePath);
+	        fileOut.write(inputStr.getBytes());
+	        fileOut.flush();
+	        fileOut.close();
+	   }catch(Exception e) {
+			logger.fatal(e.toString());
+		}
+	}
+	
+	public void deleteZoneFileEntry(DnsHostingInfoDTO dto, String filePath) {
+		try {
+			String namedFile = winDir+ZoneFileWriter.namedFilePath+"/"+ZoneFileWriter.namedFileName;
+			
+			deleteContent(namedFile,dto.getDomainName());
+	        deleteFile(filePath);
+	        	        
+	        if(dto.getZoneRecordDTOMap().values()!=null && dto.getZoneRecordDTOMap().values().size()>0) {
+	        	LinkedHashMap<String, String> mxData = new LinkedHashMap<String, String>();
+				LinkedHashMap<String, String> aData = new LinkedHashMap<String, String>();
+				
+	        	for (DnsHostingZoneRecordDTO zoneDTO : dto.getZoneRecordDTOMap().values()) {
+	        		if(zoneDTO!=null) {
+	        			if(zoneDTO.getRecordType().equals("MX")) {							
+							String[] arr = zoneDTO.getRecordValue().split(Pattern.quote("."));
+							mxData.put(arr[0], zoneDTO.getRecordValue());							
+						}
+	        			if(zoneDTO.getRecordType().equals("A")) {
+							if(mxData.containsKey(zoneDTO.getRecordName())) {
+								aData.put(zoneDTO.getRecordName(), zoneDTO.getRecordValue());
+							}
+						}
+	        		}
+	        	}
+	        	
+	        	if(aData!=null&&aData.size()>0) {
+	        		deleteReverseDNSInfo(mxData,aData,namedFile);
+				}
+	        }
+	        
+		}
+		catch(Exception e) {
+			logger.fatal(e.toString());
+		}
+	}
+	
+	public void deleteReverseDNSInfo(LinkedHashMap<String, String> mxData,LinkedHashMap<String, String> aData, String namedFile) {
+		try {
+			for(Entry<String, String> entry : aData.entrySet()) {
+				String[] arr = entry.getValue().split(Pattern.quote("."));
+				String reverse = arr[2]+"."+arr[1]+"."+arr[0];				
+				String reverseFileName = "db."+reverse;
+				String fqdn = reverse+".in-addr.arpa";
+				logger.debug("Reverse: "+fqdn);
+				String fileName = winDir+ZoneFileWriter.zoneFileLocation+"/"+ZoneFileWriter.reverseDIR+"/"+reverseFileName;
+				File file = new File(fileName);
+				if(file.exists()) {
+					deleteFile(fileName);					
+				}
+				deleteContent(namedFile,fqdn);
+				
+			}
+		}catch(Exception e){
+    		logger.fatal(e.toString());
+    	}
+	}
+	
+    public void deleteFile(String f){    	
+    	try{
+    		File file = new File(f);
+    		if(file.delete()){
+    			logger.debug(file.getName() + " is deleted!");
+    		}else{
+    			logger.debug("Delete operation is failed for file: "+file.getName());
+    		}    
+    		
+
+    	}catch(Exception e){
+    		logger.fatal(e.toString());
+    	}
+    }
 	
 	public  void createReverseDNSFile(LinkedHashMap<String, String> mxData,LinkedHashMap<String, String> aData) {
 		
@@ -155,12 +322,12 @@ public class RecordFileWriter {
 				//logger.debug("Key: "+entry.getKey()+", value: "+entry.getValue());
 				String[] arr = entry.getValue().split(Pattern.quote("."));
 				String reverse = arr[2]+"."+arr[1]+"."+arr[0];
-				//logger.debug("reverse: "+reverse);
+				logger.debug("reverse: "+reverse);
 				String value = mxData.get(entry.getKey());;
 				String content = arr[3]+" PTR "+value;
 				String reverseFileName = "db."+reverse;
 				String fqdn = reverse+".in-addr.arpa";
-				String fileName = winDir+ZoneFileWriter.zoneFileLocation+"/"+reverseFileName;
+				String fileName = winDir+ZoneFileWriter.zoneFileLocation+"/"+ZoneFileWriter.reverseDIR+"/"+reverseFileName;
 				File file = new File(fileName);
 				FileWriter fw = null;
 				boolean writeReverseNamedFile = false;
@@ -173,9 +340,11 @@ public class RecordFileWriter {
 				}else {
 					fw = new FileWriter(file,false);
 					String header = REVERSE_ZONE_FILE_CONSTANT_PORTION.replace("VAR_FQDN", fqdn);
-					header = header.replaceAll("VAR_DNS_1", DNSHostingConstant.DNS_HOSTING_PRIMARY_DNS_REVERSE);
-					header = header.replaceAll("VAR_DNS_2", "root."+DNSHostingConstant.DNS_HOSTING_PRIMARY_DNS_REVERSE);					
+					header = header.replaceAll("VAR_DNS_1", ZoneFileWriter.primaryDNS);
+					header = header.replaceAll("VAR_DNS_2", ZoneFileWriter.secondaryDNS);					
 					header = header.replaceAll("VAR_SERIAL_NUMBER", getSerialNumber(System.currentTimeMillis()));
+					header = header.replaceAll("VAR_DEFAULT_DNS_1", ZoneFileWriter.primaryDNS);
+					header = header.replaceAll("VAR_DEFAULT_DNS_2", ZoneFileWriter.secondaryDNS);
 					header +="$ORIGIN  "+fqdn+".";
 					fw.write(header);
 					fw.write("\n");
@@ -227,11 +396,52 @@ public class RecordFileWriter {
 				
 				dto.setDomainName(java.net.IDN.toASCII(dto.getDomainName()));
 				String fileName = "db."+dto.getDomainName();
-				createZoneFile(dto,new FileWriter(new File(winDir+ZoneFileWriter.zoneFileLocation+"/"+fileName)));
-				if(dto.getIsFirstWrite()==1) {
-					writeIntoNamedFile(dto.getDomainName(),fileName,new FileWriter(new File(winDir+ZoneFileWriter.namedFilePath+"/"+ZoneFileWriter.namedFileName),true));
+				String fileDIR = "";
+				
+				if(dto.getDomainName().endsWith(".bd")) {
+					for(String sld: dotBDSlds){
+						sld = sld+".bd";
+						if(dto.getDomainName().contains(sld)) {
+							fileDIR = sld;
+							break;
+						}else {
+							fileDIR = "bd";							
+						}
+						
+					}					
+				}else if(dto.getDomainName().endsWith(".বাংলা")){
+					fileDIR = ZoneFileWriter.zoneFileDIRDOTBANGLA;
+				}else {
+					fileDIR = ZoneFileWriter.zoneFileDIROTHER;
 				}
+				
+				String filePath = winDir+ZoneFileWriter.zoneFileLocation+"/"+fileDIR+"/"+fileName;
+                if(dto.getZoneFileUpdateStatus()==1) {
+                	createZoneFile(dto,new FileWriter(new File(filePath)));
+    				if(dto.getIsFirstWrite()==1) {
+    					String namedFile = winDir+ZoneFileWriter.namedFilePath+"/"+ZoneFileWriter.namedFileName;
+    					deleteContent(namedFile,dto.getDomainName());
+    					writeIntoNamedFile(dto.getDomainName(),fileDIR+"/"+fileName,new FileWriter(new File(namedFile),true));
+    					if(dto.getEmail()!=null&&dto.getEmail().length()>0) {
+    						EmailValidator ob = new EmailValidator();
+    						if(ob.validateEmail(dto.getEmail())) {
+    							sendEMailToClient(dto);
+    						}else {
+    							logger.debug("Email notificaiton not sent due to Invalid Email: "+dto.getEmail());
+    						}
+    						
+    					}
+    				}
+				}else if(dto.getZoneFileUpdateStatus()==2){
+					createParkedZoneFile(dto,new FileWriter(new File(filePath)));
+				}
+				else if(dto.getZoneFileUpdateStatus()==3){
+					deleteZoneFileEntry(dto,filePath);
+				}
+				
+				
 				status = true;
+				Thread.sleep(200);
 				
 			}catch(Exception e) {
 				logger.fatal(e.toString());
@@ -242,6 +452,7 @@ public class RecordFileWriter {
 		
 		return status;
 	}
+	
 	
 	public void runUnixCommand(String... command){
 		
@@ -255,6 +466,35 @@ public class RecordFileWriter {
 		}catch(Exception ex){
 			logger.fatal("fatal",ex);
 		}
+	}
+	
+	public void sendEMailToClient(DnsHostingInfoDTO dto) {
+		try {
+			
+			StringBuilder sb = new StringBuilder();
+			sb.append("Dear Customer,<br>");
+			sb.append("Congratulations!!!<br>");
+			sb.append("Your DNS Hosting service activated successfully for the domain: "+dto.getDomainName());
+			sb.append("<br><br>");
+			sb.append("Regards,<br>");
+			sb.append("DNS hosting Automation Service.");
+			
+			String msgText = sb.toString();
+			String mailBody = new String(msgText.getBytes(),"UTF-8");
+			SmsMailLogDAO log = new SmsMailLogDAO(
+					ApplicationConstants.EMAIL_CONSTANT.MSG_TYPE_EMAIL,
+					dto.getEmail(), 
+					ApplicationConstants.EMAIL_CONSTANT.FROM, 
+					ApplicationConstants.EMAIL_CONSTANT.SUBJECT,
+					mailBody, 
+					"");
+			log.run();
+		}
+		catch(Exception e) {
+			 logger.fatal("Error : "+e);
+		  
+		}
+		
 	}
 			
 	

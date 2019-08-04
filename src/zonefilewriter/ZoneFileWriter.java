@@ -21,15 +21,26 @@ public class ZoneFileWriter extends Thread{
 	public static final String DNS_HOSTING_TABLE_NAME = "at_dns";
 	public static final String DNS_ZONE_RECORD_TABLE_NAME = "at_dns_zone_record";
 	
+	public static String zoneFileDIRDOTBD = "dotbd";
+	public static String zoneFileDIRDOTBANGLA = "bangla";
+	public static String zoneFileDIROTHER = "other";
+	public static String reverseDIR = "reverse";
 	public static String serverType ="dotBD";
 	public static String zoneFileLocation = "/var/named";
 	public static String reveresednamedFileName = "named.rev.conf";
 	public static String namedFilePath = "/etc";
 	public static String namedFileName = "named.conf";
 	public static long interval = 60;
-	public static String named_allowed_update_ip = "123.49.12.149";
+	public static String named_allowed_update_ip = "123.49.12.149;123.49.12.182;";
 	public static String named_allowed_update_ip_rev = "123.49.12.3";
 	LinkedHashMap<Long, DnsHostingInfoDTO> data = null;
+	public static String primaryDNS = "dns.bttb.net.bd";
+	public static String secondaryDNS = "slave.bttb.net.bd";
+	public static String tertiaryDNS = null;
+	public static String parkingDNS1= "ns1.btclparked.com.bd";
+	public static String parkingDNS2= "ns2.btclparked.com.bd";
+	public static String parkingDNS3= null;
+	
 	String ids = "";
 	
 	public static  ZoneFileWriter getInstance(){
@@ -88,18 +99,21 @@ public class ZoneFileWriter extends Thread{
 	   	}
 	}
 	
-	public void updateStatus() {
+	public boolean updateStatus() {
 		ReturnObject ro = new ReturnObject();
+		boolean status = false;
 		try {
 			DnsHostingInfoDAO dao = new DnsHostingInfoDAO();
 			ro = dao.updateStatus(ids,DNS_HOSTING_TABLE_NAME);
 			if(ro.getIsSuccessful()) {
+				status = true;
 				logger.debug("DB Status Updated successfully...");
 			}
 		}catch(Exception e) {
 			 logger.fatal("Error : "+e);
 		  
 		}
+		return status;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
@@ -108,7 +122,7 @@ public class ZoneFileWriter extends Thread{
 		ReturnObject ro = new ReturnObject();
 		try {
 			DnsHostingInfoDAO dao = new DnsHostingInfoDAO();
-			ro = dao.getIDList(DNS_HOSTING_TABLE_NAME,"dnsID"," and dnsZoneFileUpdateStatus=1");
+			ro = dao.getIDList(DNS_HOSTING_TABLE_NAME,"dnsID"," and dnsZoneFileUpdateStatus>=1 limit 100");
 			if(ro != null && ro.getIsSuccessful()) {
 				
 				ArrayList<Long> IDList = (ArrayList)ro.getData();
@@ -215,6 +229,27 @@ public class ZoneFileWriter extends Thread{
 		        
 		        if(properties.get("named_allowed_update_ip")!=null){
 		        	named_allowed_update_ip =  (String) properties.get("named_allowed_update_ip");
+		        }
+		        if(properties.get("primaryDNS")!=null){
+		        	primaryDNS =  (String) properties.get("primaryDNS");
+		        }
+		        if(properties.get("primaryDNS")!=null){
+		        	primaryDNS =  (String) properties.get("primaryDNS");
+		        }
+		        if(properties.get("secondaryDNS")!=null){
+		        	secondaryDNS =  (String) properties.get("secondaryDNS");
+		        }
+		        if(properties.get("tertiaryDNS")!=null){
+		        	tertiaryDNS =  (String) properties.get("tertiaryDNS");
+		        }
+		        if(properties.get("parkingDNS1")!=null){
+		        	parkingDNS1 =  (String) properties.get("parkingDNS1");
+		        }
+		        if(properties.get("parkingDNS2")!=null){
+		        	parkingDNS2 =  (String) properties.get("parkingDNS2");
+		        }
+		        if(properties.get("parkingDNS3")!=null){
+		        	parkingDNS3 =  (String) properties.get("parkingDNS3");
 		        }
 		        
 		        
