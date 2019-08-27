@@ -24,7 +24,14 @@ public class DnsHostingInfoDTO{
 	int isFirstWrite;	
 	long nextPackageID;
 	int tldType;
-		
+	int zoneFileForSlave;
+			
+	public int getZoneFileForSlave() {
+		return zoneFileForSlave;
+	}
+	public void setZoneFileForSlave(int zoneFileForSlave) {
+		this.zoneFileForSlave = zoneFileForSlave;
+	}
 	public String getTertiaryDNS() {
 		return tertiaryDNS;
 	}

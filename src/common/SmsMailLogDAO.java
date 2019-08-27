@@ -49,7 +49,7 @@ public class SmsMailLogDAO extends Thread{
 			pstmt.setString(i++, this.sentCC);
 			pstmt.setString(i++, this.sentSubject);
 			pstmt.setString(i++, this.sentBody);
-			pstmt.setString(i++, "webhosting jar");
+			pstmt.setString(i++, "dnshosting jar");
 			if(pstmt.executeUpdate() > 0 == false) {
 				logger.fatal("Failed to insert data in sms mail log table");
 			}

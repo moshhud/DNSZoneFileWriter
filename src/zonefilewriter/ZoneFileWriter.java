@@ -40,8 +40,9 @@ public class ZoneFileWriter extends Thread{
 	public static String parkingDNS1= "ns1.btclparked.com.bd";
 	public static String parkingDNS2= "ns2.btclparked.com.bd";
 	public static String parkingDNS3= null;
-	
+	public static String winDir = "D:/root";
 	String ids = "";
+	public static long emailCheck = 60;
 	
 	public static  ZoneFileWriter getInstance(){
 		if(obZoneFileWriter==null) {
@@ -55,9 +56,23 @@ public class ZoneFileWriter extends Thread{
 		if(obZoneFileWriter==null) {
 			obZoneFileWriter = new ZoneFileWriter();
 			LoadConfiguration();
+			if(isWindows()) {
+				winDir = "D:/root";
+			}else {
+				winDir = "";
+			}
 		}
 		return obZoneFileWriter;
 	}
+	
+	public static String getOsName(){
+		  String OS = null;
+	      if(OS == null) { OS = System.getProperty("os.name"); }
+	      return OS;
+	    }
+	public static boolean isWindows(){
+		      return getOsName().startsWith("Windows");
+    }
 	
 	@Override
 	public void run(){
@@ -83,6 +98,7 @@ public class ZoneFileWriter extends Thread{
 						t2 = System.currentTimeMillis();				
 						logger.debug("Time to finish job(ms): "+(t2-t1));
 						fw.runUnixCommand("bash","-c","rndc reload");
+						//fw.runUnixCommand("bash","-c","named restart");
 					}
 				}else {
 					;//logger.debug("No Data found to write into zone file.");
@@ -104,7 +120,7 @@ public class ZoneFileWriter extends Thread{
 		boolean status = false;
 		try {
 			DnsHostingInfoDAO dao = new DnsHostingInfoDAO();
-			ro = dao.updateStatus(ids,DNS_HOSTING_TABLE_NAME);
+			ro = dao.updateStatus(data,DNS_HOSTING_TABLE_NAME);
 			if(ro.getIsSuccessful()) {
 				status = true;
 				logger.debug("DB Status Updated successfully...");
@@ -142,7 +158,7 @@ public class ZoneFileWriter extends Thread{
 									LinkedHashMap<Long, DnsHostingZoneRecordDTO> zoneData = null;
 									long key;
 									
-									ReturnObject ro = dao.getDNSZoneRecordMap(DNS_ZONE_RECORD_TABLE_NAME, " and dnszrDnsID in("+ids+")");
+									ReturnObject ro = dao.getDNSZoneRecordMap(DNS_ZONE_RECORD_TABLE_NAME, " and dnszrDnsID in("+ids+") order by dnszrRecordType desc");
 									if (ro != null && ro.getIsSuccessful() && ro.getData() instanceof LinkedHashMap) {
 										zoneData = (LinkedHashMap<Long, DnsHostingZoneRecordDTO>) ro.getData();
 										if (zoneData != null && zoneData.size() > 0) {
@@ -183,9 +199,9 @@ public class ZoneFileWriter extends Thread{
 				
 				
 			}
-			else {
+			/*else {
 				logger.debug("No data found to write into zone file");
-			}
+			}*/
 			
 			
 		}catch (Exception ex)
@@ -251,9 +267,18 @@ public class ZoneFileWriter extends Thread{
 		        if(properties.get("parkingDNS3")!=null){
 		        	parkingDNS3 =  (String) properties.get("parkingDNS3");
 		        }
-		        
-		        
 		        String strInterval = "";
+		        if(properties.get("emailCheck")!=null){
+		        	strInterval =  (String) properties.get("emailCheck");
+		        	if(strInterval!=null&&strInterval.length()>0) {
+		        		emailCheck = Long.parseLong(strInterval);
+		        	}
+		        	
+		        	
+		        }
+		        emailCheck = emailCheck*1000;		        
+		        
+		        strInterval = "";
 		        if(properties.get("interval")!=null){
 		        	strInterval =  (String) properties.get("interval");
 		        	if(strInterval!=null&&strInterval.length()>0) {
