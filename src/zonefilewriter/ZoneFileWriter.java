@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import dnshostinginfo.DnsHostingInfoDAO;
 import dnshostinginfo.DnsHostingInfoDTO;
+import dnshostinginfo.DnsHostingPTRDTO;
 import dnshostinginfo.DnsHostingZoneRecordDTO;
 import util.ReturnObject;
 
@@ -20,6 +21,7 @@ public class ZoneFileWriter extends Thread{
 	boolean running = false;
 	public static final String DNS_HOSTING_TABLE_NAME = "at_dns";
 	public static final String DNS_ZONE_RECORD_TABLE_NAME = "at_dns_zone_record";
+	public static final String DNS_HOSTING_PTR_TABLE_NAME = "at_dns_additional_ptr";
 	
 	public static String zoneFileDIRDOTBD = "dotbd";
 	public static String zoneFileDIRDOTBANGLA = "bangla";
@@ -34,6 +36,7 @@ public class ZoneFileWriter extends Thread{
 	public static String named_allowed_update_ip = "123.49.12.149;123.49.12.182;";
 	public static String named_allowed_update_ip_rev = "123.49.12.3";
 	LinkedHashMap<Long, DnsHostingInfoDTO> data = null;
+	LinkedHashMap<Long, DnsHostingPTRDTO> ptrdata = null;
 	public static String primaryDNS = "dns.bttb.net.bd";
 	public static String secondaryDNS = "slave.bttb.net.bd";
 	public static String tertiaryDNS = null;
@@ -42,6 +45,7 @@ public class ZoneFileWriter extends Thread{
 	public static String parkingDNS3= null;
 	public static String winDir = "D:/root";
 	String ids = "";
+	String ptrIDs = "";
 	public static long emailCheck = 60;
 	
 	public static  ZoneFileWriter getInstance(){
@@ -84,34 +88,70 @@ public class ZoneFileWriter extends Thread{
 			
 			while(running)
             {
-				t1 = System.currentTimeMillis();
-				getData();
-				//logger.debug("Current ids: "+ids);
-				if(data!=null&&data.size()>0) {
-					logger.debug("Current ids: "+ids);
-					RecordFileWriter fw = new RecordFileWriter();
-					boolean status = fw.processData(data, ids);
-					if(status) {
-						updateStatus();
-						data=null;
-						ids="";						
-						t2 = System.currentTimeMillis();				
-						logger.debug("Time to finish job(ms): "+(t2-t1));
-						fw.runUnixCommand("bash","-c","rndc reload");
-						//fw.runUnixCommand("bash","-c","named restart");
+				
+				
+				try {
+					t1 = System.currentTimeMillis();
+					getData();
+					//logger.debug("Current ids: "+ids);
+					if(data!=null&&data.size()>0) {
+						logger.debug("Current ids: "+ids);
+						RecordFileWriter fw = new RecordFileWriter();
+						boolean status = fw.processData(data, ids);
+						if(status) {
+							updateStatus();
+							data=null;
+							ids="";						
+							t2 = System.currentTimeMillis();				
+							logger.debug("Time to finish job(ms): "+(t2-t1));
+							if(!isWindows()) {
+								fw.runUnixCommand("bash","-c","rndc reload");
+								//fw.runUnixCommand("bash","-c","named restart");			
+							}
+																
+						}
+					}else {
+						;//logger.debug("No Data found to write into zone file.");
 					}
-				}else {
-					;//logger.debug("No Data found to write into zone file.");
-				}				
+				}
+				catch(Exception e){
+			   	  	 logger.fatal("Error : "+e);	   	  	  
+			   	}
+				
+				try {
+					t1 = System.currentTimeMillis();
+					//Processing external PTR records
+					getPTRData();
+					if(ptrdata!=null&&ptrdata.size()>0) {
+						RecordFileWriter fw = new RecordFileWriter();
+						boolean status = fw.processPTRData(ptrdata, ids);
+						
+						if(status) {
+							//update status
+							updatePTRStatus();								
+							//reset data
+							ptrdata=null;
+							ptrIDs="";	
+							t2 = System.currentTimeMillis();				
+							logger.debug("Time to finish job(ms): "+(t2-t1));
+							if(!isWindows()) {
+								fw.runUnixCommand("bash","-c","rndc reload");
+							}
+							
+						}
+					}
+				}
+				catch(Exception e){
+			   	  	 logger.fatal("Error : "+e);	   	  	  
+			   	}
+				
 				Thread.sleep(interval);
             }
 			
 			
 			
 		}catch(Exception e){
-	   	  	 logger.fatal("Error : "+e);
-	   	  	
-	   	  	  
+	   	  	 logger.fatal("Error : "+e);	   	  	  
 	   	}
 	}
 	
@@ -130,6 +170,54 @@ public class ZoneFileWriter extends Thread{
 		  
 		}
 		return status;
+	}
+	
+	public boolean updatePTRStatus() {
+		ReturnObject ro = new ReturnObject();
+		boolean status = false;
+		try {
+			DnsHostingInfoDAO dao = new DnsHostingInfoDAO();
+			ro = dao.updatePTRStatus(ptrdata,DNS_HOSTING_PTR_TABLE_NAME);
+			if(ro.getIsSuccessful()) {
+				status = true;
+				logger.debug("DB Status Updated successfully...");
+			}
+		}catch(Exception e) {
+			 logger.fatal("Error : "+e);
+		  
+		}
+		return status;
+	}
+	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
+	public ReturnObject getPTRData() {
+		ReturnObject ro = new ReturnObject();
+		try {
+			DnsHostingInfoDAO dao = new DnsHostingInfoDAO();
+			ro = dao.getIDList(DNS_HOSTING_PTR_TABLE_NAME,"dnsadPTRID"," and dnsadPTRZoneFileUpdateStatus>=1 limit 100");
+			if(ro != null && ro.getIsSuccessful()) {
+				ArrayList<Long> IDList = (ArrayList)ro.getData();
+				if(IDList!=null&&IDList.size()>0) {
+					ptrIDs = dao.getStringFromArrayList(IDList, false);
+					ro = dao.getDNSHostingPTRInfoMap(DNS_HOSTING_PTR_TABLE_NAME, " and dnsadPTRID in("+ptrIDs+") ");
+					if (ro != null && ro.getIsSuccessful() && ro.getData() instanceof LinkedHashMap) {
+						ptrdata = (LinkedHashMap<Long, DnsHostingPTRDTO>)ro.getData();
+						if (ptrdata != null && ptrdata.size() > 0) {
+							ro = ReturnObject.clearInstance(ro);
+							ro.setIsSuccessful(true);
+							ro.setData(ptrdata);
+						}
+					}
+				}
+			}
+			
+		}
+		catch (Exception ex)
+	    {
+			logger.fatal("Exception: "+ex.toString());
+	    }
+		
+		return ro;
 	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })

@@ -108,6 +108,53 @@ public class DnsHostingInfoDAO {
 		return ro;
 	}
 	
+	public ReturnObject updatePTRStatus(LinkedHashMap<Long, DnsHostingPTRDTO> data,String tableName) {
+		Connection connection = null;
+		PreparedStatement pstmt = null;
+		String sql = null;
+		
+		try {
+			sql = "UPDATE "+tableName +" set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?";
+			logger.debug(sql);
+			connection = DatabaseManager.getInstance().getConnection();
+			pstmt = (PreparedStatement) connection.prepareStatement(sql);
+			for(DnsHostingPTRDTO dto:data.values() ) {
+				int i=1;
+				int slave=0;	
+				String desc = "";
+				pstmt.setInt(i++, 0);				
+				if( dto.getZoneFileUpdateStatus()==1) {
+					slave=1;
+					desc = "Add: Completed";
+				}else if(dto.getZoneFileUpdateStatus()==2) {
+					slave=2;
+					desc = "Update: Completed";
+				}else {
+					slave = 3;
+					desc = "Delete: Completed";
+				}
+				pstmt.setInt(i++, slave);
+				pstmt.setString(i++, desc);
+				pstmt.setLong(i++, dto.getID());
+				pstmt.addBatch();
+			}			
+			if (pstmt.executeBatch().length > 0) {				
+				ro.clear();
+				ro.setIsSuccessful(true);
+			}
+			
+		}catch (Exception e) {
+			logger.fatal("Error : "+e);
+		}finally {			
+			try{
+				DatabaseManager.getInstance().freeConnection(connection);
+				
+			}catch(Exception exx){}
+		}
+		
+		return ro;
+	}
+	
 	
 	@SuppressWarnings("null")
 	public ReturnObject getDNSHostingInfoMap(String tableName,String condition) {
@@ -231,7 +278,76 @@ public class DnsHostingInfoDAO {
 		return ro;
 	}
 	
+	@SuppressWarnings("null")
+	public ReturnObject getDNSHostingPTRInfoMap(String tableName,String condition) {
+		Connection connection = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		String sql = null;		
+		
+		LinkedHashMap<Long, DnsHostingPTRDTO> data = null;
+		DnsHostingPTRDTO dto = null;
 	
+		try {
+			connection = DatabaseManager.getInstance().getConnection();			 
+			if(condition==null&&condition.isEmpty()) {
+				condition="";
+			}
+			
+			sql = "select dnsadPTRClientName,"
+					+ "dnsadPTRDesc,"
+					+ "dnsadPTRIP,"
+					+ "dnsadPTREmailServer,"
+					+ "dnsadPTRZoneFileUpdateStatus,"
+					+ "dnsadPTRZoneFileUpdateDesc,"
+					+ "dnsadPTRZoneFileForSlave,"
+					+ "dnsadPTRCreationTime,"					
+					+ "dnsadPTRLastModificationTime,"
+					+ "dnsIsDeleteded,"
+					+ "dnsadPTRID"					
+					+ "  from "+tableName+" where 1=1 "+condition;
+			//logger.debug(sql);
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			data = new LinkedHashMap<Long, DnsHostingPTRDTO>();			
+			while(rs.next())
+			{
+				dto = new DnsHostingPTRDTO();
+				
+				dto.setClientName(rs.getString("dnsadPTRClientName"));
+				dto.setDescription(rs.getString("dnsadPTRDesc"));
+				dto.setIpAddress(rs.getString("dnsadPTRIP"));
+				dto.setEmailServerDomain(rs.getString("dnsadPTREmailServer"));
+				dto.setZoneFileUpdateStatus(rs.getInt("dnsadPTRZoneFileUpdateStatus"));
+				dto.setUpdateDescription(rs.getString("dnsadPTRZoneFileUpdateDesc"));
+				dto.setZoneFileForSlave(rs.getInt("dnsadPTRZoneFileForSlave"));
+				dto.setCreationTime(rs.getLong("dnsadPTRCreationTime"));
+				dto.setLastModificationTime(rs.getLong("dnsadPTRLastModificationTime"));
+				dto.setIsDeleted(rs.getInt("dnsIsDeleteded"));
+				dto.setID(rs.getLong("dnsadPTRID"));
+				
+				data.put(rs.getLong("dnsadPTRID"), dto);
+			}
+			
+			rs.close();
+			stmt.close();
+			
+			if(data != null && data.size() > 0) {
+				ro.setData(data);
+				ro.setIsSuccessful(true);
+			}
+			
+		}catch(Exception ex){
+			logger.debug("fatal",ex);
+		}finally{
+			try{
+				DatabaseManager.getInstance().freeConnection(connection);
+				
+			}catch(Exception exx){}
+		}
+		return ro;
+	}
 	
 	public String getStringFromArrayList(
 			@SuppressWarnings("rawtypes") ArrayList vals,

@@ -22,6 +22,8 @@ public class ZoneFileWriterMain implements ShutDownListener{
 		obZoneFileWriter = ZoneFileWriter.getInstance();
 		obZoneFileWriter.start();
 		
+		
+		
 		obMailService = MailService.getInstance();
 		obMailService.start();
 				

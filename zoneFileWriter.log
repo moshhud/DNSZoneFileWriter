@@ -452,3 +452,712 @@ Caused by: java.io.IOException: CreateProcess error=2, The system cannot find th
 	at java.lang.ProcessImpl.<init>(Unknown Source)
 	at java.lang.ProcessImpl.start(Unknown Source)
 	... 5 more
+2019-12-04 12:13:57,349 DEBUG ZoneFileWriter:292 - namedFileName: named.conf, Interval: 30000
+2019-12-04 12:13:57,365 DEBUG ZoneFileWriter:80 - run...
+2019-12-04 12:13:57,365 DEBUG ZoneFileWriter:82 - Service started.
+2019-12-04 12:13:57,388 DEBUG MailService:36 - Client Service started.
+2019-12-04 12:13:57,406 DEBUG ZoneFileWriterMain:29 - Zone File Writer started successfully.
+2019-12-04 12:13:57,504 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-04 12:13:57,960 DEBUG MailService:57 - Time to finish Email service job(ms): 572
+2019-12-04 12:13:58,018 DEBUG ZoneFileWriter:91 - Current ids: 11002,15006
+2019-12-04 12:13:58,148 DEBUG RecordFileWriter:328 - reverse: 72.74.208
+2019-12-04 12:13:58,768 DEBUG RecordFileWriter:328 - reverse: 20.168.192
+2019-12-04 12:13:58,984 DEBUG RecordFileWriter:459 - Zone File written successfully.
+2019-12-04 12:13:59,100 DEBUG ZoneFileWriter:126 - DB Status Updated successfully...
+2019-12-04 12:13:59,101 DEBUG ZoneFileWriter:99 - Time to finish job(ms): 1736
+2019-12-04 12:13:59,170 FATAL RecordFileWriter:475 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:468)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:100)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-04 12:14:57,998 DEBUG MailService:78 - 27731
+2019-12-04 12:14:58,005 DEBUG MailService:47 - Sending email for ID: 27731
+2019-12-04 12:14:58,087 DEBUG MailSend:62 - mailServerInformationDTO mail.MailServerInformationDTO@14079d09
+2019-12-04 12:14:58,088 DEBUG MailSend:76 - sendMailWithContentAndSubject with running false
+2019-12-04 12:14:58,088 DEBUG MailSend:83 - Mail server run is called
+2019-12-04 12:14:58,088 DEBUG MailService:57 - Time to finish Email service job(ms): 128
+2019-12-04 12:14:58,089 DEBUG MailSend:109 - ccList 
+2019-12-04 12:14:58,219 DEBUG MailSend:144 - to[0] moshhud@revesoft.com
+2019-12-04 12:14:58,219 DEBUG MailSend:147 - address[0] moshhud@revesoft.com
+2019-12-04 12:15:23,691 DEBUG MailSend:260 - DONE
+2019-12-04 12:15:58,091 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-04 12:16:58,093 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:17:58,095 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-04 12:18:58,097 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:19:58,101 DEBUG MailService:57 - Time to finish Email service job(ms): 3
+2019-12-04 12:20:58,102 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:21:58,104 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:22:58,105 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:23:58,107 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:24:58,109 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:25:58,110 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:26:58,115 DEBUG MailService:57 - Time to finish Email service job(ms): 3
+2019-12-04 12:27:58,116 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:28:58,119 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:29:58,121 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:30:58,122 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:31:58,124 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:32:58,126 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:33:58,127 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:34:58,129 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:35:58,131 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:36:58,133 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:37:58,135 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:38:58,137 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:39:58,140 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:40:58,142 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-04 12:41:58,144 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-04 12:42:58,146 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:43:58,148 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:44:58,150 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:45:58,153 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:46:58,154 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:47:58,155 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:48:58,157 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:49:58,159 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-04 12:50:58,160 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:51:58,162 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:52:58,162 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:53:58,163 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:54:58,165 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:55:58,165 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 12:56:58,168 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:57:58,169 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:58:58,171 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 12:59:58,172 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:00:58,173 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:01:58,174 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 13:02:58,177 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:03:58,178 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 13:04:58,180 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:05:58,180 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-04 13:06:58,181 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:07:58,182 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:08:58,184 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:09:58,187 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:10:58,188 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:11:58,192 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-04 13:12:58,194 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-04 13:13:58,378 DEBUG MailService:57 - Time to finish Email service job(ms): 183
+2019-12-04 13:14:58,380 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:15:58,383 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-04 13:18:37,741 DEBUG ZoneFileWriter:292 - namedFileName: named.conf, Interval: 30000
+2019-12-04 13:18:37,747 DEBUG ZoneFileWriter:80 - run...
+2019-12-04 13:18:37,747 DEBUG ZoneFileWriter:82 - Service started.
+2019-12-04 13:18:37,779 DEBUG MailService:36 - Client Service started.
+2019-12-04 13:18:37,815 DEBUG ZoneFileWriterMain:29 - Zone File Writer started successfully.
+2019-12-04 13:18:38,254 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-04 13:18:39,124 DEBUG MailService:57 - Time to finish Email service job(ms): 1345
+2019-12-04 13:19:39,126 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-04 13:19:43,882 DEBUG ZoneFileWriter:292 - namedFileName: named.conf, Interval: 30000
+2019-12-04 13:19:43,886 DEBUG ZoneFileWriter:80 - run...
+2019-12-04 13:19:43,886 DEBUG ZoneFileWriter:82 - Service started.
+2019-12-04 13:19:43,887 DEBUG MailService:36 - Client Service started.
+2019-12-04 13:19:43,888 DEBUG ZoneFileWriterMain:29 - Zone File Writer started successfully.
+2019-12-04 13:19:43,949 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-04 13:19:44,232 DEBUG MailService:57 - Time to finish Email service job(ms): 344
+2019-12-09 10:16:57,070 DEBUG ZoneFileWriter:341 - namedFileName: named.conf, Interval: 30000
+2019-12-09 10:16:57,084 DEBUG ZoneFileWriter:84 - run...
+2019-12-09 10:16:57,084 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-09 10:16:57,201 DEBUG MailService:36 - Client Service started.
+2019-12-09 10:16:57,231 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-09 10:16:58,189 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-09 10:17:00,799 DEBUG MailService:57 - Time to finish Email service job(ms): 3598
+2019-12-09 10:30:12,046 DEBUG ZoneFileWriter:358 - namedFileName: named.conf, Interval: 30000
+2019-12-09 10:30:12,068 DEBUG ZoneFileWriter:84 - run...
+2019-12-09 10:30:12,069 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-09 10:30:12,092 DEBUG MailService:36 - Client Service started.
+2019-12-09 10:30:12,134 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-09 10:30:12,542 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-09 10:30:13,715 DEBUG MailService:57 - Time to finish Email service job(ms): 1623
+2019-12-09 10:33:00,733 DEBUG ZoneFileWriter:360 - namedFileName: named.conf, Interval: 30000
+2019-12-09 10:33:00,738 DEBUG ZoneFileWriter:84 - run...
+2019-12-09 10:33:00,738 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-09 10:33:00,755 DEBUG MailService:36 - Client Service started.
+2019-12-09 10:33:00,770 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-09 10:33:01,062 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-09 10:33:01,659 DEBUG MailService:57 - Time to finish Email service job(ms): 903
+2019-12-09 10:33:01,698 DEBUG RecordFileWriter:458 - reverse: 20.168.192
+2019-12-09 10:33:01,700 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:33:01,881 DEBUG RecordFileWriter:400 - reverse: 2.168.192
+2019-12-09 10:33:31,928 DEBUG RecordFileWriter:458 - reverse: 20.168.192
+2019-12-09 10:33:31,930 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:33:31,935 DEBUG RecordFileWriter:400 - reverse: 2.168.192
+2019-12-09 10:34:01,661 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 10:34:01,944 DEBUG RecordFileWriter:458 - reverse: 20.168.192
+2019-12-09 10:34:01,945 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:34:01,950 DEBUG RecordFileWriter:400 - reverse: 2.168.192
+2019-12-09 10:34:31,956 DEBUG RecordFileWriter:458 - reverse: 20.168.192
+2019-12-09 10:34:31,960 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:34:31,966 DEBUG RecordFileWriter:400 - reverse: 2.168.192
+2019-12-09 10:35:01,662 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 10:35:01,973 DEBUG RecordFileWriter:458 - reverse: 20.168.192
+2019-12-09 10:35:01,974 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:35:01,976 DEBUG RecordFileWriter:400 - reverse: 2.168.192
+2019-12-09 10:36:58,188 DEBUG ZoneFileWriter:360 - namedFileName: named.conf, Interval: 30000
+2019-12-09 10:36:58,194 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-09 10:36:58,196 DEBUG ZoneFileWriter:84 - run...
+2019-12-09 10:36:58,197 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-09 10:36:58,197 DEBUG MailService:36 - Client Service started.
+2019-12-09 10:36:58,314 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-09 10:36:58,660 DEBUG RecordFileWriter:458 - reverse: 20.168.192
+2019-12-09 10:36:58,662 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:36:58,665 DEBUG RecordFileWriter:400 - reverse: 2.168.192
+2019-12-09 10:36:58,696 DEBUG MailService:57 - Time to finish Email service job(ms): 498
+2019-12-09 10:38:33,721 DEBUG ZoneFileWriter:360 - namedFileName: named.conf, Interval: 30000
+2019-12-09 10:38:33,724 DEBUG ZoneFileWriter:84 - run...
+2019-12-09 10:38:33,725 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-09 10:38:33,727 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-09 10:38:33,727 DEBUG MailService:36 - Client Service started.
+2019-12-09 10:38:33,784 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-09 10:38:34,190 DEBUG MailService:57 - Time to finish Email service job(ms): 462
+2019-12-09 10:38:34,195 DEBUG RecordFileWriter:458 - reverse: 20.168.192
+2019-12-09 10:38:34,297 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:38:34,403 DEBUG RecordFileWriter:400 - reverse: 2.168.192
+2019-12-09 10:38:34,510 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 10:38:35,085 DEBUG ZoneFileWriter:163 - DB Status Updated successfully...
+2019-12-09 10:42:52,603 DEBUG ZoneFileWriter:360 - namedFileName: named.conf, Interval: 30000
+2019-12-09 10:42:52,618 DEBUG ZoneFileWriter:84 - run...
+2019-12-09 10:42:52,618 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-09 10:42:52,663 DEBUG MailService:36 - Client Service started.
+2019-12-09 10:42:52,694 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-09 10:42:52,996 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-09 10:42:53,504 DEBUG MailService:57 - Time to finish Email service job(ms): 841
+2019-12-09 10:43:53,671 DEBUG MailService:57 - Time to finish Email service job(ms): 167
+2019-12-09 10:43:53,828 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:43:53,935 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 10:43:54,151 DEBUG ZoneFileWriter:163 - DB Status Updated successfully...
+2019-12-09 10:44:53,672 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 10:45:53,680 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 10:46:53,682 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 10:46:54,193 DEBUG RecordFileWriter:400 - reverse: 1.168.192
+2019-12-09 10:46:54,331 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 10:46:54,418 DEBUG ZoneFileWriter:163 - DB Status Updated successfully...
+2019-12-09 10:47:24,421 DEBUG RecordFileWriter:460 - reverse: 1.168.192
+2019-12-09 10:47:24,527 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 10:47:24,591 DEBUG ZoneFileWriter:163 - DB Status Updated successfully...
+2019-12-09 10:47:53,687 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 10:48:53,688 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 10:49:53,690 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 10:50:53,693 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 10:51:53,694 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 10:57:22,710 DEBUG ZoneFileWriter:374 - namedFileName: named.conf, Interval: 30000
+2019-12-09 10:57:22,719 DEBUG ZoneFileWriter:84 - run...
+2019-12-09 10:57:22,720 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-09 10:57:22,739 DEBUG MailService:36 - Client Service started.
+2019-12-09 10:57:22,769 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-09 10:57:22,961 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-09 10:57:23,672 DEBUG MailService:57 - Time to finish Email service job(ms): 933
+2019-12-09 10:58:23,674 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 10:58:53,694 DEBUG RecordFileWriter:404 - reverse: 2.168.192
+2019-12-09 10:58:53,815 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 10:58:54,116 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 10:58:54,116 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 428
+2019-12-09 10:58:54,634 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 10:59:23,675 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 10:59:24,667 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-09 10:59:24,780 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 10:59:24,876 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 10:59:24,877 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 213
+2019-12-09 10:59:24,886 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 11:00:23,677 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:01:23,678 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:02:23,678 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:03:23,679 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:03:24,948 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-09 11:03:29,531 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 11:03:29,655 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 11:03:29,656 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 4709
+2019-12-09 11:03:29,687 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 11:04:23,680 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:05:23,681 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:06:23,684 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:07:23,685 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:08:23,687 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:09:23,690 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:10:23,691 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:11:23,693 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:12:23,693 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:13:23,695 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:14:23,696 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:15:23,697 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:16:23,699 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:17:23,699 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:18:23,700 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:18:30,178 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-09 11:18:30,323 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 11:18:30,392 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 11:18:30,393 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 217
+2019-12-09 11:18:30,547 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 11:19:23,701 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:20:23,702 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:21:23,703 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:22:23,705 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:23:23,706 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:24:23,774 DEBUG MailService:57 - Time to finish Email service job(ms): 66
+2019-12-09 11:25:23,775 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:26:23,776 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:27:23,777 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:28:23,778 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:29:23,779 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:30:23,783 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 11:31:23,784 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 11:32:23,785 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:33:23,785 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:34:23,785 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:35:23,786 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:36:23,786 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:37:23,788 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:38:23,789 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:39:23,791 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:40:23,792 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:41:23,792 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:42:23,792 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 11:43:23,793 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:38:12,258 DEBUG ZoneFileWriter:374 - namedFileName: named.conf, Interval: 30000
+2019-12-09 13:38:12,294 DEBUG ZoneFileWriter:84 - run...
+2019-12-09 13:38:12,296 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-09 13:38:12,386 DEBUG MailService:36 - Client Service started.
+2019-12-09 13:38:12,439 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-09 13:38:12,985 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-09 13:38:13,949 DEBUG MailService:57 - Time to finish Email service job(ms): 1562
+2019-12-09 13:38:44,155 DEBUG RecordFileWriter:464 - reverse: 1.168.192
+2019-12-09 13:38:44,257 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 13:38:44,364 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 13:38:44,365 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 397
+2019-12-09 13:38:44,642 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 13:39:13,951 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:39:44,664 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-09 13:39:44,769 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 13:39:44,849 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 13:39:44,851 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 188
+2019-12-09 13:39:44,856 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 13:40:13,952 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:40:14,859 DEBUG RecordFileWriter:464 - reverse: 1.168.192
+2019-12-09 13:40:14,961 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 13:40:15,017 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 13:40:15,017 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 159
+2019-12-09 13:40:15,020 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 13:41:13,952 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:41:15,023 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-09 13:41:15,126 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 13:41:15,397 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 13:41:15,398 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 376
+2019-12-09 13:41:15,402 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 13:42:13,955 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 13:43:13,955 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:44:13,957 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:45:13,959 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:46:13,960 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:47:13,962 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:48:13,964 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:49:13,966 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:50:13,968 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:51:13,969 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:52:13,970 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:53:13,972 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:54:13,973 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:55:13,975 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:56:13,976 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 13:57:13,979 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 13:58:13,980 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 13:59:13,981 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:00:13,983 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:01:13,984 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:02:13,986 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:03:13,989 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:04:13,990 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:05:13,991 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:06:13,992 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:07:13,994 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 14:08:13,996 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:09:13,998 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:10:14,000 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:11:14,001 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:12:14,002 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:13:14,003 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:14:14,003 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:15:14,005 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:16:14,007 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:17:14,009 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:18:14,011 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:19:14,012 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:20:14,015 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:21:14,016 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:22:14,017 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:23:14,019 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:24:14,021 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:25:14,022 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:26:14,025 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:27:14,026 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:28:14,028 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:29:14,029 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:30:14,030 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:31:14,032 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:32:14,033 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:33:14,035 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:34:14,036 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:35:14,036 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:36:14,037 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:37:14,039 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:38:14,488 DEBUG MailService:57 - Time to finish Email service job(ms): 449
+2019-12-09 14:39:14,490 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:40:14,491 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:41:14,495 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 14:42:14,497 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:43:14,499 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:44:14,500 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:45:14,500 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:46:14,502 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:47:14,504 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:48:14,505 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:49:14,507 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 14:50:14,509 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:50:45,828 DEBUG RecordFileWriter:464 - reverse: 1.168.192
+2019-12-09 14:50:45,943 DEBUG RecordFileWriter:464 - reverse: 1.168.192
+2019-12-09 14:50:46,061 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 14:50:46,222 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 14:50:46,222 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 397
+2019-12-09 14:50:46,498 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 14:51:14,510 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:52:14,511 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:53:14,513 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:53:16,506 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-09 14:53:16,610 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 14:53:16,708 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 14:53:16,708 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 203
+2019-12-09 14:53:16,713 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 14:54:14,515 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:54:46,717 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-09 14:54:46,849 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-09 14:54:46,911 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-09 14:54:46,912 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 197
+2019-12-09 14:54:46,980 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-09 14:55:14,515 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:56:14,516 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 14:57:14,517 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 14:58:14,519 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-09 14:59:14,519 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:00:14,519 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:01:14,520 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:02:14,521 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:03:14,522 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:04:14,557 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:05:14,557 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:06:14,557 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:07:14,558 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:08:14,560 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:09:14,560 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:10:14,566 DEBUG MailService:57 - Time to finish Email service job(ms): 4
+2019-12-09 15:11:14,566 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:12:14,566 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:13:14,568 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:14:14,569 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:15:14,570 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:16:14,571 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:17:14,573 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:18:14,573 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:19:14,574 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:20:14,575 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:21:14,576 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:22:14,577 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:23:14,580 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:24:14,581 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:25:14,582 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:26:14,582 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:27:14,584 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:28:14,585 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:29:14,586 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:30:14,589 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:31:14,589 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:32:14,589 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:33:14,590 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:34:14,592 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:35:14,594 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:36:14,595 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:37:14,598 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:38:14,853 DEBUG MailService:57 - Time to finish Email service job(ms): 255
+2019-12-09 15:39:14,855 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:40:14,856 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:41:14,857 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:42:14,858 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:43:14,859 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:44:14,860 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:45:14,860 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:46:14,862 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:47:14,864 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:48:14,865 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:49:14,866 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:50:14,866 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:51:14,866 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:52:14,868 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:53:14,869 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:54:14,870 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:55:14,870 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:56:14,871 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:57:14,872 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 15:58:14,873 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 15:59:14,874 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:00:14,875 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:01:14,876 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:02:14,877 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:03:14,878 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:04:14,879 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:05:14,879 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:06:14,881 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:07:14,882 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:08:14,884 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:09:14,885 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:10:14,887 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:11:14,888 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:12:14,889 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:13:14,890 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:14:14,891 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:15:14,892 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:16:14,892 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:17:14,894 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:18:14,895 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:19:14,896 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:20:14,897 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:21:14,898 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:22:14,899 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:23:14,900 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:24:14,901 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:25:14,901 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:26:14,903 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:27:14,904 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:28:14,905 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:29:14,906 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:30:14,907 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:31:14,908 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:32:42,590 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:33:42,592 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:34:42,593 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:35:42,595 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:36:42,596 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:37:42,597 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:38:42,751 DEBUG MailService:57 - Time to finish Email service job(ms): 154
+2019-12-09 16:39:42,754 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:40:42,754 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:41:42,756 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:42:42,757 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:43:42,759 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:44:42,761 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:45:42,761 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:46:42,762 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:47:42,764 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:48:42,765 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:49:42,767 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:50:42,768 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:51:42,770 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:52:42,771 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:53:42,771 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:54:42,771 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:55:42,772 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:56:42,772 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:57:42,805 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 16:58:42,807 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-09 16:59:42,807 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:00:42,808 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:01:42,808 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:02:42,809 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:03:42,810 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:04:42,810 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:05:42,810 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:06:42,811 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:07:42,812 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:08:42,812 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:09:42,813 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:10:42,813 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-09 17:11:42,815 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-10 09:34:34,557 DEBUG ZoneFileWriter:374 - namedFileName: named.conf, Interval: 30000
+2019-12-10 09:34:34,584 DEBUG ZoneFileWriter:84 - run...
+2019-12-10 09:34:34,584 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-10 09:34:34,624 DEBUG MailService:36 - Client Service started.
+2019-12-10 09:34:34,764 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-10 09:34:34,803 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-10 09:34:35,376 DEBUG MailService:57 - Time to finish Email service job(ms): 752
+2019-12-10 09:35:35,379 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-10 09:36:05,596 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-10 09:36:05,719 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-10 09:36:05,849 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-10 09:36:05,850 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 405
+2019-12-10 09:36:05,871 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-10 09:36:35,380 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-10 09:37:35,382 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-10 09:38:35,384 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-10 09:39:35,390 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-10 09:40:35,393 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-10 09:40:35,888 DEBUG RecordFileWriter:464 - reverse: 1.168.192
+2019-12-10 09:40:36,009 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-10 09:40:36,078 DEBUG ZoneFileWriter:177 - DB Status Updated successfully...
+2019-12-10 09:40:36,078 DEBUG ZoneFileWriter:133 - Time to finish job(ms): 193
+2019-12-10 09:40:36,083 FATAL RecordFileWriter:564 - fatal
+java.io.IOException: Cannot run program "bash": CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1048)
+	at java.lang.Runtime.exec(Runtime.java:620)
+	at java.lang.Runtime.exec(Runtime.java:485)
+	at zonefilewriter.RecordFileWriter.runUnixCommand(RecordFileWriter.java:557)
+	at zonefilewriter.ZoneFileWriter.run(ZoneFileWriter.java:134)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.lang.ProcessImpl.create(Native Method)
+	at java.lang.ProcessImpl.<init>(ProcessImpl.java:386)
+	at java.lang.ProcessImpl.start(ProcessImpl.java:137)
+	at java.lang.ProcessBuilder.start(ProcessBuilder.java:1029)
+	... 4 more
+2019-12-10 09:41:35,395 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-10 09:42:35,397 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-10 09:43:35,398 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-10 09:44:35,400 DEBUG MailService:57 - Time to finish Email service job(ms): 1
