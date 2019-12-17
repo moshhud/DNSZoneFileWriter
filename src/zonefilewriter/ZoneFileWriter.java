@@ -47,6 +47,7 @@ public class ZoneFileWriter extends Thread{
 	String ids = "";
 	String ptrIDs = "";
 	public static long emailCheck = 60;
+	public static String namedBackupTime = "daily";
 	
 	public static  ZoneFileWriter getInstance(){
 		if(obZoneFileWriter==null) {
@@ -355,6 +356,11 @@ public class ZoneFileWriter extends Thread{
 		        if(properties.get("parkingDNS3")!=null){
 		        	parkingDNS3 =  (String) properties.get("parkingDNS3");
 		        }
+		        
+		        if(properties.get("namedBackupTime")!=null){
+		        	namedBackupTime =  (String) properties.get("namedBackupTime");
+		        }
+		        
 		        String strInterval = "";
 		        if(properties.get("emailCheck")!=null){
 		        	strInterval =  (String) properties.get("emailCheck");

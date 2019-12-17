@@ -51,10 +51,10 @@ public class MailService extends Thread{
 						data = null;
 						ids = "";
 					}
-				}
-				
 				t2 = System.currentTimeMillis();				
 				logger.debug("Time to finish Email service job(ms): "+(t2-t1));
+				}
+								
 				Thread.sleep(ZoneFileWriter.emailCheck);
 				
 				
