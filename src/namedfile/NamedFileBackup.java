@@ -55,25 +55,35 @@ public class NamedFileBackup extends Thread{
 				if((currentTime-temp)>=interval) {
 					String today = new DateAndTime().getDateFromLongUnderScore(currentTime);
 					temp=currentTime;
-					backupFileName = ZoneFileWriter.winDir+ZoneFileWriter.namedFilePath+"/"+"namedBackup/"+ZoneFileWriter.namedFileName +"_"+today;
+					backupFileName = ZoneFileWriter.winDir+ZoneFileWriter.namedFilePath+"/"+ZoneFileWriter.namedBackupFolder+"/"+ZoneFileWriter.namedFileName +"_"+today;
 					logger.debug("Taking backup with name "+backupFileName+" at: "+currentTime);
-					File source = new File(namedFile);
-					File dest = new File(backupFileName);
-					if(dest.exists()) {
-						dest.delete();
-					}
-					Path pathToFile = Paths.get(backupFileName);
-					Files.createDirectories(pathToFile.getParent());
-					Files.copy(source.toPath(), dest.toPath());
+					copyFile(namedFile,backupFileName);
 				}				
 				
-				Thread.sleep(3000);
+				Thread.sleep(30000);
 				
 			}
 			catch(Exception e){
 		   	  	 logger.fatal("Error : "+e);		   	  	  
 		   	}
         }
+		
+	}
+	
+	public void copyFile(String sourceFileName, String destinationFileName) {
+		try {
+			File source = new File(sourceFileName);
+			File dest = new File(destinationFileName);
+			if(dest.exists()) {
+				dest.delete();
+			}
+			Path pathToFile = Paths.get(destinationFileName);
+			Files.createDirectories(pathToFile.getParent());
+			Files.copy(source.toPath(), dest.toPath());
+		}
+		catch(Exception e){
+	   	  	 logger.fatal("Error : "+e);		   	  	  
+	   	}
 		
 	}
 

@@ -1161,3 +1161,298 @@ Caused by: java.io.IOException: CreateProcess error=2, The system cannot find th
 2019-12-10 09:42:35,397 DEBUG MailService:57 - Time to finish Email service job(ms): 1
 2019-12-10 09:43:35,398 DEBUG MailService:57 - Time to finish Email service job(ms): 0
 2019-12-10 09:44:35,400 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-11 14:40:30,641 DEBUG ZoneFileWriter:380 - namedFileName: named.conf, Interval: 30000
+2019-12-11 14:40:30,643 DEBUG ZoneFileWriter:84 - run...
+2019-12-11 14:40:30,644 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-11 14:40:30,661 DEBUG MailService:36 - Client Service started.
+2019-12-11 14:40:30,661 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-11 14:40:30,768 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-11 14:40:31,111 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-11 14:40:31,190 DEBUG MailService:57 - Time to finish Email service job(ms): 529
+2019-12-11 14:40:31,217 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-11 14:40:31,345 DEBUG ZoneFileWriter:183 - DB Status Updated successfully...
+2019-12-11 14:40:31,345 DEBUG ZoneFileWriter:136 - Time to finish job(ms): 261
+2019-12-11 14:41:31,190 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-11 14:44:00,699 DEBUG ZoneFileWriter:380 - namedFileName: named.conf, Interval: 30000
+2019-12-11 14:44:00,705 DEBUG ZoneFileWriter:84 - run...
+2019-12-11 14:44:00,707 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-11 14:44:00,708 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-11 14:44:00,708 DEBUG MailService:36 - Client Service started.
+2019-12-11 14:44:00,810 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-11 14:44:01,099 DEBUG MailService:57 - Time to finish Email service job(ms): 390
+2019-12-11 14:44:31,158 DEBUG RecordFileWriter:464 - reverse: 1.168.192
+2019-12-11 14:44:31,159 FATAL RecordFileWriter:391 - Error: java.io.FileNotFoundException: D:\root\var\named\DB_File_Directory\reverse\rev.192.168.1 (The system cannot find the file specified)
+2019-12-11 14:44:31,259 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-11 14:44:31,340 DEBUG ZoneFileWriter:183 - DB Status Updated successfully...
+2019-12-11 14:44:31,340 DEBUG ZoneFileWriter:136 - Time to finish job(ms): 190
+2019-12-11 14:45:01,102 DEBUG MailService:57 - Time to finish Email service job(ms): 3
+2019-12-11 14:46:01,105 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-11 14:47:01,106 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-11 14:48:01,108 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-11 14:49:01,112 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-11 14:50:01,114 DEBUG MailService:57 - Time to finish Email service job(ms): 1
+2019-12-11 14:51:01,115 DEBUG MailService:57 - Time to finish Email service job(ms): 0
+2019-12-11 14:51:31,361 DEBUG RecordFileWriter:404 - reverse: 1.168.192
+2019-12-11 14:51:31,477 DEBUG DnsHostingInfoDAO:118 - UPDATE at_dns_additional_ptr set dnsadPTRZoneFileUpdateStatus=?, dnsadPTRZoneFileForSlave=?,dnsadPTRZoneFileUpdateDesc=? where dnsadPTRID=?
+2019-12-11 14:51:31,598 DEBUG ZoneFileWriter:183 - DB Status Updated successfully...
+2019-12-11 14:51:31,599 DEBUG ZoneFileWriter:136 - Time to finish job(ms): 239
+2019-12-11 14:52:01,119 DEBUG MailService:57 - Time to finish Email service job(ms): 2
+2019-12-12 14:49:26,413 DEBUG ZoneFileWriter:380 - namedFileName: named.conf, Interval: 30000
+2019-12-12 14:49:26,477 DEBUG ZoneFileWriter:84 - run...
+2019-12-12 14:49:26,480 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-12 14:49:26,721 DEBUG MailService:36 - Client Service started.
+2019-12-12 14:49:26,737 DEBUG ZoneFileWriterMain:31 - Zone File Writer started successfully.
+2019-12-12 14:49:27,114 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-12 14:49:27,772 DEBUG ZoneFileWriter:98 - Current ids: 11002,14002
+2019-12-12 14:49:27,930 DEBUG RecordFileWriter:329 - reverse: 72.74.208
+2019-12-12 14:49:28,945 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-12 14:49:29,053 DEBUG ZoneFileWriter:166 - DB Status Updated successfully...
+2019-12-12 14:49:29,064 DEBUG ZoneFileWriter:106 - Time to finish job(ms): 2583
+2019-12-12 14:50:27,943 DEBUG MailService:78 - 27735
+2019-12-12 14:50:27,984 DEBUG MailService:47 - Sending email for ID: 27735
+2019-12-12 14:50:28,456 DEBUG MailSend:62 - mailServerInformationDTO mail.MailServerInformationDTO@40dc8bee
+2019-12-12 14:50:28,458 DEBUG MailSend:76 - sendMailWithContentAndSubject with running false
+2019-12-12 14:50:28,459 DEBUG MailService:55 - Time to finish Email service job(ms): 748
+2019-12-12 14:50:28,460 DEBUG MailSend:83 - Mail server run is called
+2019-12-12 14:51:28,467 DEBUG MailService:78 - 27735
+2019-12-12 14:51:28,469 DEBUG MailService:47 - Sending email for ID: 27735
+2019-12-12 14:51:28,470 DEBUG MailSend:76 - sendMailWithContentAndSubject with running true
+2019-12-12 14:51:28,471 DEBUG MailService:55 - Time to finish Email service job(ms): 6
+2019-12-12 14:51:28,471 DEBUG MailSend:109 - ccList 
+2019-12-12 14:51:28,701 DEBUG MailSend:144 - to[0] moshhud@revesoft.com
+2019-12-12 14:51:28,701 DEBUG MailSend:147 - address[0] moshhud@revesoft.com
+2019-12-12 14:51:53,081 DEBUG MailSend:200 - com.sun.mail.util.MailConnectException: Couldn't connect to host, port: mail.btcl.com.bd, 25; timeout -1;
+  nested exception is:
+	java.net.ConnectException: Connection timed out: connect
+2019-12-12 14:51:53,082 DEBUG MailSend:260 - DONE
+2019-12-12 14:52:28,471 DEBUG MailService:78 - 27735
+2019-12-12 14:52:28,472 DEBUG MailService:47 - Sending email for ID: 27735
+2019-12-12 14:52:28,472 DEBUG MailSend:76 - sendMailWithContentAndSubject with running true
+2019-12-12 14:52:28,473 DEBUG MailService:55 - Time to finish Email service job(ms): 2
+2019-12-12 14:52:28,473 DEBUG MailSend:109 - ccList 
+2019-12-12 14:52:28,475 DEBUG MailSend:144 - to[0] moshhud@revesoft.com
+2019-12-12 14:52:28,475 DEBUG MailSend:147 - address[0] moshhud@revesoft.com
+2019-12-12 14:52:51,502 DEBUG MailSend:260 - DONE
+2019-12-12 16:36:40,563 DEBUG ZoneFileWriter:98 - Current ids: 11002
+2019-12-12 16:36:40,575 DEBUG RecordFileWriter:329 - reverse: 72.74.208
+2019-12-12 16:36:40,784 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-12 16:36:40,940 DEBUG ZoneFileWriter:166 - DB Status Updated successfully...
+2019-12-12 16:36:40,941 DEBUG ZoneFileWriter:106 - Time to finish job(ms): 408
+2019-12-17 10:58:37,968 DEBUG ZoneFileWriter:380 - namedFileName: named.conf, Interval: 30000
+2019-12-17 10:58:38,016 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 10:58:38,017 DEBUG ZoneFileWriter:84 - run...
+2019-12-17 10:58:38,017 DEBUG ZoneFileWriter:86 - Service started.
+2019-12-17 10:58:38,020 DEBUG MailService:36 - Client Service started.
+2019-12-17 10:58:38,023 DEBUG NamedFileBackup:28 - Named file backup Service started.
+2019-12-17 10:58:38,023 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:38,164 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 10:58:38,723 DEBUG ZoneFileWriter:98 - Current ids: 14002
+2019-12-17 10:58:38,986 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 10:58:39,029 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:39,079 DEBUG ZoneFileWriter:166 - DB Status Updated successfully...
+2019-12-17 10:58:39,079 DEBUG ZoneFileWriter:106 - Time to finish job(ms): 1061
+2019-12-17 10:58:40,029 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:41,030 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:42,030 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:43,034 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:44,035 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:45,036 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:46,036 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:47,038 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:48,038 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:49,038 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:50,038 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:51,039 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:52,039 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:53,039 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:54,040 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:55,040 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:56,041 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:57,041 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:58,041 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:58:59,041 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:59:00,043 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 10:59:01,044 DEBUG NamedFileBackup:33 - Taking named.conf backup...
+2019-12-17 11:36:53,641 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 11:36:53,644 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 11:36:53,644 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 11:36:53,646 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 11:36:53,647 DEBUG MailService:36 - Client Service started.
+2019-12-17 11:36:53,647 DEBUG NamedFileBackup:32 - Named file backup Service started.
+2019-12-17 11:36:53,648 DEBUG NamedFileBackup:38 - Taking named.conf backup...
+2019-12-17 11:36:53,654 DEBUG NamedFileBackup:45 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 11:36:53,707 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 11:46:32,726 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 11:46:32,731 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 11:46:32,732 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 11:46:32,732 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 11:46:32,734 DEBUG MailService:36 - Client Service started.
+2019-12-17 11:46:32,735 DEBUG NamedFileBackup:32 - Named file backup Service started.
+2019-12-17 11:46:32,735 DEBUG NamedFileBackup:41 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 11:46:32,740 DEBUG NamedFileBackup:49 - Taking named.conf backup at: 1576561592740
+2019-12-17 11:46:32,811 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:05:28,570 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:05:28,573 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:05:28,573 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:05:28,574 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:05:28,574 DEBUG NamedFileBackup:33 - Named file backup Service started.
+2019-12-17 12:05:28,575 DEBUG NamedFileBackup:42 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:05:28,575 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:05:28,576 DEBUG NamedFileBackup:53 - Taking D:/root/etc/named.conf17_12_2019 backup at: 17_12_2019
+2019-12-17 12:05:28,634 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:06:10,859 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:06:10,861 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:06:10,862 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:06:10,862 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:06:10,863 DEBUG NamedFileBackup:33 - Named file backup Service started.
+2019-12-17 12:06:10,864 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:06:10,864 DEBUG NamedFileBackup:42 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:06:10,870 DEBUG NamedFileBackup:53 - Taking D:/root/etc/named.conf_17_12_2019 backup at: 17_12_2019
+2019-12-17 12:06:10,924 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:07:33,462 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:07:33,465 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:07:33,465 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:07:33,466 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:07:33,466 DEBUG NamedFileBackup:33 - Named file backup Service started.
+2019-12-17 12:07:33,467 DEBUG NamedFileBackup:43 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:07:33,467 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:07:33,470 DEBUG NamedFileBackup:54 - Taking D:/root/etc/named.conf_17_12_2019 backup at: 1576562853468
+2019-12-17 12:07:33,521 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:08:15,920 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:08:15,923 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:08:15,924 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:08:15,926 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:08:15,927 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:08:15,928 DEBUG NamedFileBackup:33 - Named file backup Service started.
+2019-12-17 12:08:15,928 DEBUG NamedFileBackup:43 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:08:15,934 DEBUG NamedFileBackup:54 - Taking backup with name D:/root/etc/named.conf_17_12_2019 at: 1576562895930
+2019-12-17 12:08:16,000 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:21:02,109 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:21:02,111 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:21:02,111 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:21:02,112 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:21:02,113 DEBUG NamedFileBackup:36 - Named file backup Service started.
+2019-12-17 12:21:02,114 DEBUG NamedFileBackup:46 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:21:02,115 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:21:02,115 DEBUG NamedFileBackup:57 - Taking backup with name D:/root/etc/named.conf_17_12_2019 at: 1576563662114
+2019-12-17 12:21:02,208 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:21:53,655 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:21:53,657 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:21:53,658 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:21:53,659 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:21:53,659 DEBUG NamedFileBackup:36 - Named file backup Service started.
+2019-12-17 12:21:53,660 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:21:53,660 DEBUG NamedFileBackup:46 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:21:53,663 DEBUG NamedFileBackup:57 - Taking backup with name D:/root/etc/named.conf_17_12_2019 at: 1576563713662
+2019-12-17 12:21:53,675 FATAL NamedFileBackup:67 - Error : java.nio.file.FileAlreadyExistsException: D:\root\etc\named.conf_17_12_2019
+2019-12-17 12:21:53,721 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:24:57,379 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:24:57,382 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:24:57,382 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:24:57,383 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:24:57,383 DEBUG NamedFileBackup:36 - Named file backup Service started.
+2019-12-17 12:24:57,384 DEBUG NamedFileBackup:46 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:24:57,384 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:24:57,387 DEBUG NamedFileBackup:57 - Taking backup with name D:/root/etc/namedBackup/named.conf_17_12_2019 at: 1576563897385
+2019-12-17 12:24:57,454 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:28:59,464 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:28:59,466 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:28:59,467 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:28:59,469 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:28:59,470 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:28:59,471 DEBUG NamedFileBackup:38 - Named file backup Service started.
+2019-12-17 12:28:59,471 DEBUG NamedFileBackup:48 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:28:59,477 DEBUG NamedFileBackup:59 - Taking backup with name D:/root/etc/namedBackup/named.conf_17_12_2019 at: 1576564139476
+2019-12-17 12:28:59,553 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:29:47,372 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:29:47,376 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:29:47,376 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:29:47,378 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:29:47,379 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:29:47,379 DEBUG NamedFileBackup:38 - Named file backup Service started.
+2019-12-17 12:29:47,380 DEBUG NamedFileBackup:48 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:29:47,387 DEBUG NamedFileBackup:59 - Taking backup with name D:/root/etc/namedBackup/named.conf_17_12_2019 at: 1576564187386
+2019-12-17 12:29:47,416 FATAL NamedFileBackup:71 - Error : java.nio.file.FileAlreadyExistsException: D:\root\etc\namedBackup\named.conf_17_12_2019
+2019-12-17 12:29:47,463 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:32:07,213 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:32:07,215 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:32:07,215 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:32:07,216 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:32:07,217 DEBUG NamedFileBackup:38 - Named file backup Service started.
+2019-12-17 12:32:07,217 DEBUG NamedFileBackup:48 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:32:07,218 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:32:07,220 DEBUG NamedFileBackup:59 - Taking backup with name D:/root/etc/namedBackup/named.conf_17_12_2019 at: 1576564327218
+2019-12-17 12:32:07,280 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:33:01,737 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:33:01,739 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:33:01,740 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:33:01,740 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:33:01,742 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:33:01,743 DEBUG NamedFileBackup:38 - Named file backup Service started.
+2019-12-17 12:33:01,744 DEBUG NamedFileBackup:48 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:33:01,749 DEBUG NamedFileBackup:59 - Taking backup with name D:/root/etc/namedBackup/named.conf_17_12_2019 at: 1576564381749
+2019-12-17 12:33:01,804 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 12:35:20,985 DEBUG ZoneFileWriter:386 - namedFileName: named.conf, Interval: 30000
+2019-12-17 12:35:20,989 DEBUG ZoneFileWriter:85 - run...
+2019-12-17 12:35:20,989 DEBUG ZoneFileWriter:87 - Service started.
+2019-12-17 12:35:20,991 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 12:35:20,991 DEBUG MailService:36 - Client Service started.
+2019-12-17 12:35:20,992 DEBUG NamedFileBackup:38 - Named file backup Service started.
+2019-12-17 12:35:20,992 DEBUG NamedFileBackup:48 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 12:35:20,999 DEBUG NamedFileBackup:59 - Taking backup with name D:/root/etc/namedBackup/named.conf_17_12_2019 at: 1576564520998
+2019-12-17 12:35:21,054 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 13:19:38,312 DEBUG ZoneFileWriter:391 - namedFileName: named.conf, Interval: 30000
+2019-12-17 13:19:38,315 DEBUG ZoneFileWriter:86 - run...
+2019-12-17 13:19:38,316 DEBUG ZoneFileWriter:88 - Service started.
+2019-12-17 13:19:38,316 DEBUG MailService:36 - Client Service started.
+2019-12-17 13:19:38,317 DEBUG NamedFileBackup:38 - Named file backup Service started.
+2019-12-17 13:19:38,317 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-17 13:19:38,317 DEBUG NamedFileBackup:48 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-17 13:19:38,326 DEBUG NamedFileBackup:59 - Taking backup with name D:/root/etc/namedBackup/named.conf_17_12_2019 at: 1576567178325
+2019-12-17 13:19:38,567 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-17 14:26:24,090 DEBUG NamedFileBackup:49 - Taking named.conf backup at: 1576571184090
+2019-12-17 14:39:39,007 DEBUG ZoneFileWriter:99 - Current ids: 14002
+2019-12-17 14:39:39,396 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 14:39:39,687 DEBUG ZoneFileWriter:167 - DB Status Updated successfully...
+2019-12-17 14:39:39,687 DEBUG ZoneFileWriter:107 - Time to finish job(ms): 922
+2019-12-17 14:56:39,831 DEBUG ZoneFileWriter:99 - Current ids: 14002
+2019-12-17 14:56:40,040 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 14:56:40,113 DEBUG ZoneFileWriter:167 - DB Status Updated successfully...
+2019-12-17 14:56:40,113 DEBUG ZoneFileWriter:107 - Time to finish job(ms): 284
+2019-12-17 14:57:10,115 DEBUG ZoneFileWriter:99 - Current ids: 14002
+2019-12-17 14:57:10,324 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 14:57:10,379 DEBUG ZoneFileWriter:167 - DB Status Updated successfully...
+2019-12-17 14:57:10,380 DEBUG ZoneFileWriter:107 - Time to finish job(ms): 266
+2019-12-17 14:59:10,421 DEBUG ZoneFileWriter:99 - Current ids: 14002
+2019-12-17 14:59:10,632 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 14:59:10,705 DEBUG ZoneFileWriter:167 - DB Status Updated successfully...
+2019-12-17 14:59:10,706 DEBUG ZoneFileWriter:107 - Time to finish job(ms): 289
+2019-12-17 15:00:40,713 DEBUG ZoneFileWriter:99 - Current ids: 14002
+2019-12-17 15:00:40,990 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 15:00:41,049 DEBUG ZoneFileWriter:167 - DB Status Updated successfully...
+2019-12-17 15:00:41,049 DEBUG ZoneFileWriter:107 - Time to finish job(ms): 339
+2019-12-17 15:37:41,163 DEBUG ZoneFileWriter:99 - Current ids: 14002
+2019-12-17 15:37:41,825 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 15:37:41,862 DEBUG ZoneFileWriter:167 - DB Status Updated successfully...
+2019-12-17 15:37:41,862 DEBUG ZoneFileWriter:107 - Time to finish job(ms): 701
+2019-12-17 15:38:41,865 DEBUG ZoneFileWriter:99 - Current ids: 14002
+2019-12-17 15:38:42,075 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 15:38:42,126 DEBUG ZoneFileWriter:167 - DB Status Updated successfully...
+2019-12-17 15:38:42,127 DEBUG ZoneFileWriter:107 - Time to finish job(ms): 263
+2019-12-17 15:39:12,128 DEBUG ZoneFileWriter:99 - Current ids: 14002
+2019-12-17 15:39:12,358 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-17 15:39:12,462 DEBUG ZoneFileWriter:167 - DB Status Updated successfully...
+2019-12-17 15:39:12,462 DEBUG ZoneFileWriter:107 - Time to finish job(ms): 335
+2019-12-18 09:46:56,376 DEBUG ZoneFileWriter:391 - namedFileName: named.conf, Interval: 30000
+2019-12-18 09:46:56,406 DEBUG ZoneFileWriter:86 - run...
+2019-12-18 09:46:56,407 DEBUG ZoneFileWriter:88 - Service started.
+2019-12-18 09:46:56,433 DEBUG MailService:36 - Client Service started.
+2019-12-18 09:46:56,481 DEBUG NamedFileBackup:38 - Named file backup Service started.
+2019-12-18 09:46:56,482 DEBUG NamedFileBackup:48 - Interval: 8640000, named file: D:/root/etc/named.conf
+2019-12-18 09:46:56,488 DEBUG ZoneFileWriterMain:34 - Zone File Writer started successfully.
+2019-12-18 09:46:56,495 DEBUG NamedFileBackup:59 - Taking backup with name D:/root/etc/namedBackup/named.conf_18_12_2019 at: 1576640816482
+2019-12-18 09:46:57,183 DEBUG DatabaseManager:228 - Initial Connections:1
+2019-12-18 09:46:57,973 DEBUG ZoneFileWriter:100 - Current ids: 14002
+2019-12-18 09:46:58,393 DEBUG RecordFileWriter:548 - Zone File written successfully.
+2019-12-18 09:46:58,571 DEBUG ZoneFileWriter:168 - DB Status Updated successfully...
+2019-12-18 09:46:58,571 DEBUG ZoneFileWriter:108 - Time to finish job(ms): 2164

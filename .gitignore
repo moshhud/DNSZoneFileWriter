@@ -1,3 +1,4 @@
 /bin/
 *.log
 .classpath
+zoneFileWriter.log
