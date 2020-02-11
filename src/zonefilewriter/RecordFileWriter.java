@@ -510,25 +510,34 @@ public class RecordFileWriter {
 				
 				String filePath = ZoneFileWriter.winDir+ZoneFileWriter.zoneFileLocation+"/"+fileDIR+"/"+fileName;
                 if(dto.getZoneFileUpdateStatus()==1) {
-                	createZoneFile(dto,new FileWriter(new File(filePath)));
-                	Thread.sleep(100);
+                	
     				if(dto.getIsFirstWrite()==1) {
-    					String namedFile = ZoneFileWriter.winDir+ZoneFileWriter.namedFilePath+"/"+ZoneFileWriter.namedFileName;
-    					//deleteContent(namedFile,domainName);
-    					//Thread.sleep(200);
-    					writeIntoNamedFile(domainName,fileDIR+"/"+fileName,new FileWriter(new File(namedFile),true));
-    					Thread.sleep(100);
-    					if(dto.getEmail()!=null&&dto.getEmail().length()>0) {
-    						EmailValidator ob = new EmailValidator();
-    						if(ob.validateEmail(dto.getEmail())) {
-    							sendEMailToClient(dto);
-    							Thread.sleep(100);
-    						}else {
-    							logger.debug("Email notificaiton not sent due to Invalid Email: "+dto.getEmail());
-    						}
-    						
+    					File file = new File(filePath);
+    					if(file.exists()) {
+    						logger.debug("Zone File already exists...");
+    					}
+    					else {
+    						String namedFile = ZoneFileWriter.winDir+ZoneFileWriter.namedFilePath+"/"+ZoneFileWriter.namedFileName;
+        					//deleteContent(namedFile,domainName);
+        					//Thread.sleep(200);
+        					writeIntoNamedFile(domainName,fileDIR+"/"+fileName,new FileWriter(new File(namedFile),true));
+        					Thread.sleep(100);
+        					if(dto.getEmail()!=null&&dto.getEmail().length()>0) {
+        						EmailValidator ob = new EmailValidator();
+        						if(ob.validateEmail(dto.getEmail())) {
+        							sendEMailToClient(dto);
+        							Thread.sleep(100);
+        						}else {
+        							logger.debug("Email notificaiton not sent due to Invalid Email: "+dto.getEmail());
+        						}
+        						
+        					}
     					}
     				}
+    				
+    				createZoneFile(dto,new FileWriter(new File(filePath)));
+                	Thread.sleep(100);
+    				
 				}else if(dto.getZoneFileUpdateStatus()==2){
 					createParkedZoneFile(dto,new FileWriter(new File(filePath)));
 				}
