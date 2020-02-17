@@ -250,7 +250,9 @@ public class RecordFileWriter {
 			
 			deleteContent(namedFile,dto.getDomainName());
 	        deleteFile(filePath);
-	        	        
+	        
+	        //temporary disabled reverse DNS info snippet 
+	        /*
 	        if(dto.getZoneRecordDTOMap().values()!=null && dto.getZoneRecordDTOMap().values().size()>0) {
 	        	LinkedHashMap<String, String> mxData = new LinkedHashMap<String, String>();
 				LinkedHashMap<String, String> aData = new LinkedHashMap<String, String>();
@@ -273,7 +275,7 @@ public class RecordFileWriter {
 	        		deleteReverseDNSInfo(mxData,aData,namedFile);
 				}
 	        }
-	        
+	        */
 		}
 		catch(Exception e) {
 			logger.fatal(e.toString());
@@ -484,8 +486,7 @@ public class RecordFileWriter {
 		boolean status = false;
 		for(DnsHostingInfoDTO dto:data.values() ) {
 			
-			try {
-				
+			try {				
 				dto.setDomainName(java.net.IDN.toASCII(dto.getDomainName()));
 				String domainName = dto.getDomainName();
 				String fileName = domainName;//"db."+dto.getDomainName();				
@@ -499,8 +500,7 @@ public class RecordFileWriter {
 							break;
 						}else {
 							fileDIR = "bd";							
-						}
-						
+						}						
 					}					
 				}else if(domainName.endsWith(".বাংলা")){
 					fileDIR = ZoneFileWriter.zoneFileDIRDOTBANGLA;
@@ -510,13 +510,42 @@ public class RecordFileWriter {
 				
 				String filePath = ZoneFileWriter.winDir+ZoneFileWriter.zoneFileLocation+"/"+fileDIR+"/"+fileName;
                 if(dto.getZoneFileUpdateStatus()==1) {
+                	boolean writeIntoNamed = false;
+                	boolean zoneValidator = false;
+                	File file = new File(filePath);                	
+                	if(!file.exists()) {
+                		writeIntoNamed = true;
+                	}                	
+                	String temp_file = filePath+"_temp";                
+                	createZoneFile(dto,new FileWriter(new File(temp_file)));
+                	Thread.sleep(100); 
+                	file = new File(temp_file);
                 	
-    				if(dto.getIsFirstWrite()==1) {
-    					File file = new File(filePath);
-    					if(file.exists()) {
-    						logger.debug("Zone File already exists...");
-    					}
-    					else {
+                	if(file.exists()) {
+                		//check zone file if valid.
+                		String command = "named-checkzone  "+dto.getDomainName()+"  "+temp_file;
+                		logger.debug("Validation check for: "+temp_file);
+        	        	zoneValidator = validateZoneFile(command);
+                		if(zoneValidator) {
+                			deleteFile(filePath);
+                			file.renameTo(new File(filePath));
+                		}else {
+                			deleteFile(temp_file);
+                			//send email notification                			
+                			StringBuilder sb = new StringBuilder();
+                			sb.append("Dear Concern,<br>");                			
+                			sb.append("DNS Service encounter some issues on zone file for the domain: "+dto.getDomainName());
+                			sb.append(". Please check the configuration and update with correct info.");
+                			sb.append("<br><br>");
+                			sb.append("Regards,<br>");
+                			sb.append("DNS hosting Automation Service.");                			
+                			sendEMailWrittingIssueEmail(dto.getEmail(),"moshhud@revesoft.com;monirul@revesoft.com","Notification for DNS Zone file writting issue",sb.toString());
+                		}
+                		Thread.sleep(100);  
+                	}
+                	                	
+    				if(dto.getIsFirstWrite()==1) {    					
+    					if(writeIntoNamed && zoneValidator) {
     						String namedFile = ZoneFileWriter.winDir+ZoneFileWriter.namedFilePath+"/"+ZoneFileWriter.namedFileName;
         					//deleteContent(namedFile,domainName);
         					//Thread.sleep(200);
@@ -533,19 +562,13 @@ public class RecordFileWriter {
         						
         					}
     					}
-    				}
-    				
-    				createZoneFile(dto,new FileWriter(new File(filePath)));
-                	Thread.sleep(100);
-    				
+    				}    				    				
 				}else if(dto.getZoneFileUpdateStatus()==2){
 					createParkedZoneFile(dto,new FileWriter(new File(filePath)));
 				}
 				else if(dto.getZoneFileUpdateStatus()==3){
 					deleteZoneFileEntry(dto,filePath);
-				}
-				
-				
+				}								
 				status = true;
 				Thread.sleep(100);
 				
@@ -601,6 +624,59 @@ public class RecordFileWriter {
 		  
 		}
 		
+	}
+	
+	public void sendEMailWrittingIssueEmail(String to, String cc, String sub, String message) {
+		try {
+						
+			String mailBody = new String(message.getBytes(),"UTF-8");
+			SmsMailLogDAO log = new SmsMailLogDAO(
+					ApplicationConstants.EMAIL_CONSTANT.MSG_TYPE_EMAIL,
+					to, 
+					ApplicationConstants.EMAIL_CONSTANT.FROM, 
+					sub,
+					mailBody, 
+					cc);
+			log.run();
+		}
+		catch(Exception e) {
+			 logger.fatal("Error : "+e);		  
+		}
+		
+	}
+	
+	public boolean validateZoneFile(String command){
+		boolean status = true;
+		try{
+			//logger.debug("Checking for: "+command);
+			Process p = Runtime.getRuntime().exec(command);
+			BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String termialOutputLine;
+			StringBuffer sb = new StringBuffer();
+			
+			while ((termialOutputLine = stdInput.readLine()) != null) {			
+				sb.append(termialOutputLine);
+				sb.append("\n");
+			}
+			
+			logger.debug(sb.toString());
+			
+			if(sb.toString().contains("bad owner name")){						 
+				status = false;
+			}else if(sb.toString().contains("file not found")){				
+				status = false;
+			}else if(sb.toString().contains("not loaded due to errors")){
+				status = false;
+			}
+						
+		}
+		catch(Exception e){
+			status = false;
+			logger.fatal(e.toString());
+		}
+			
+		
+		return status;
 	}
 			
 	

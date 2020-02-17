@@ -15,6 +15,8 @@ public class ZoneFileWriterMain implements ShutDownListener{
 	public static   ZoneFileWriter obZoneFileWriter = null;
 	public static MailService obMailService = null;
 	public static NamedFileBackup obNamedFileBackup = null;
+	public static BindServiceCheckThread obBindServiceCheckThread = null;
+	public static   ZoneFileWriter2 obZoneFileWriter2 = null;
 	
 	public static void main(String[] args)	
 	{
@@ -29,6 +31,12 @@ public class ZoneFileWriterMain implements ShutDownListener{
 		
 		obNamedFileBackup = NamedFileBackup.getInstance();
 		obNamedFileBackup.start();
+		
+		obBindServiceCheckThread = BindServiceCheckThread.getInstance();
+		obBindServiceCheckThread.start();
+		
+		/*obZoneFileWriter2 = ZoneFileWriter2.getInstance();
+		obZoneFileWriter2.start();*/
 				
 		ShutDownService.getInstance().addShutDownListener(obMain);
 		logger.debug("Zone File Writer started successfully.");

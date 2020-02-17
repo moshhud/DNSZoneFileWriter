@@ -173,7 +173,7 @@ public class DnsHostingInfoDAO {
 			}
 			
 			sql = "select dnsID,dnsClientID,dnsFQDN,dnsPrimaryDNS"
-					+ ",dnsSecondaryDNS,dnsTertiaryDNS,dnsEmail,dnsIsPrivileged"
+					+ ",dnsSecondaryDNS,dnsTertiaryDNS,dnsEmail,dnsIsPrivileged,dnsIsBlocked"
 					+ ",dnsZoneFileUpdateStatus,dnsIsFirstWrite,dnsTLDType,dnsZoneFileForSlave"
 					+ "  from "+tableName+" where 1=1 "+condition;
 			//logger.debug(sql);
@@ -197,6 +197,7 @@ public class DnsHostingInfoDAO {
 				dto.setTldType(rs.getInt("dnsTLDType"));
 				dto.setTertiaryDNS(rs.getString("dnsTertiaryDNS"));
 				dto.setZoneFileForSlave(rs.getInt("dnsZoneFileForSlave"));
+				dto.setIsBlocked(rs.getInt("dnsIsBlocked"));
 				data.put(rs.getLong("dnsID"), dto);
 			}
 			

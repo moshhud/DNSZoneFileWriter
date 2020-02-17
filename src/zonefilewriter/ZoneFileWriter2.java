@@ -14,10 +14,10 @@ import dnshostinginfo.DnsHostingPTRDTO;
 import dnshostinginfo.DnsHostingZoneRecordDTO;
 import util.ReturnObject;
 
-public class ZoneFileWriter extends Thread{
+public class ZoneFileWriter2 extends Thread{
 	
-	static Logger logger = Logger.getLogger(ZoneFileWriter.class);
-	public static   ZoneFileWriter obZoneFileWriter;
+	static Logger logger = Logger.getLogger(ZoneFileWriter2.class);
+	public static   ZoneFileWriter2 obZoneFileWriter;
 	boolean running = false;
 	public static final String DNS_HOSTING_TABLE_NAME = "at_dns";
 	public static final String DNS_ZONE_RECORD_TABLE_NAME = "at_dns_zone_record";
@@ -31,9 +31,9 @@ public class ZoneFileWriter extends Thread{
 	public static String zoneFileLocation = "/var/named";
 	public static String reveresednamedFileName = "named.rev.conf";
 	public static String namedFilePath = "/etc";
-	public static String namedFileName = "named_live.conf";
+	public static String namedFileName = "named.conf";
 	public static long interval = 60;
-	public static String named_allowed_update_ip = "123.49.12.149;123.49.12.182;";
+	public static String named_allowed_update_ip = "123.49.12.149;123.49.12.182";
 	public static String named_allowed_update_ip_rev = "123.49.12.3";
 	LinkedHashMap<Long, DnsHostingInfoDTO> data = null;
 	LinkedHashMap<Long, DnsHostingPTRDTO> ptrdata = null;
@@ -44,15 +44,14 @@ public class ZoneFileWriter extends Thread{
 	public static String parkingDNS2= "ns2.btclparked.com.bd";
 	public static String parkingDNS3= null;
 	public static String winDir = "D:/root";
-	public static String serverIP = "123.49.12.148";
-	public static String bindNotificationTo = "moshhud@revesoft.com";
+	
 	String ids = "";
 	String ptrIDs = "";
 	public static long emailCheck = 60;
 	public static String namedBackupTime = "daily";
 	public static String namedBackupFolder = "namedBackup";
 	
-	public static  ZoneFileWriter getInstance(){
+	public static  ZoneFileWriter2 getInstance(){
 		if(obZoneFileWriter==null) {
 			createInstance();
 		}
@@ -60,9 +59,9 @@ public class ZoneFileWriter extends Thread{
 		return obZoneFileWriter;
 		
 	}	
-	public static synchronized ZoneFileWriter createInstance(){
+	public static synchronized ZoneFileWriter2 createInstance(){
 		if(obZoneFileWriter==null) {
-			obZoneFileWriter = new ZoneFileWriter();
+			obZoneFileWriter = new ZoneFileWriter2();
 			LoadConfiguration();
 			if(isWindows()) {
 				winDir = "D:/root";
@@ -100,7 +99,7 @@ public class ZoneFileWriter extends Thread{
 					//logger.debug("Current ids: "+ids);
 					if(data!=null&&data.size()>0) {
 						logger.debug("Current ids: "+ids);
-						RecordFileWriter fw = new RecordFileWriter();
+						RecordFileWriter2 fw = new RecordFileWriter2();
 						boolean status = fw.processData(data, ids);
 						if(status) {
 							updateStatus();
@@ -116,33 +115,6 @@ public class ZoneFileWriter extends Thread{
 						}
 					}else {
 						;//logger.debug("No Data found to write into zone file.");
-					}
-				}
-				catch(Exception e){
-			   	  	 logger.fatal("Error : "+e);	   	  	  
-			   	}
-				
-				try {
-					t1 = System.currentTimeMillis();
-					//Processing external PTR records
-					getPTRData();
-					if(ptrdata!=null&&ptrdata.size()>0) {
-						RecordFileWriter fw = new RecordFileWriter();
-						boolean status = fw.processPTRData(ptrdata, ids);
-						
-						if(status) {
-							//update status
-							updatePTRStatus();								
-							//reset data
-							ptrdata=null;
-							ptrIDs="";	
-							t2 = System.currentTimeMillis();				
-							logger.debug("Time to finish job(ms): "+(t2-t1));
-							if(!isWindows()) {
-								fw.runUnixCommand("bash","-c","rndc reload");
-							}
-							
-						}
 					}
 				}
 				catch(Exception e){
@@ -329,7 +301,8 @@ public class ZoneFileWriter extends Thread{
 		        	reveresednamedFileName =  (String) properties.get("reveresednamedFileName");
 		        }
 		        if(properties.get("zoneFileLocation")!=null){
-		        	zoneFileLocation =  (String) properties.get("zoneFileLocation");		        	
+		        	zoneFileLocation =  (String) properties.get("zoneFileLocation");
+		        	logger.debug(zoneFileLocation);
 		        }
 		        if(properties.get("serverType")!=null){
 		        	serverType =  (String) properties.get("serverType");
@@ -367,13 +340,6 @@ public class ZoneFileWriter extends Thread{
 		        	namedBackupFolder =  (String) properties.get("namedBackupFolder");
 		        }
 		        
-		        if(properties.get("serverIP")!=null){
-		        	serverIP =  (String) properties.get("serverIP");
-		        }
-		        
-		        if(properties.get("bindNotificationTo")!=null){
-		        	bindNotificationTo =  (String) properties.get("bindNotificationTo");
-		        }
 		        
 		        String strInterval = "";
 		        if(properties.get("emailCheck")!=null){
